@@ -19,10 +19,13 @@ class Test_Algorithms(unittest.TestCase):
     
     
     # Change this name when you're working on this part.
-    def t3st_importer(self):
+    def t3st_importer_batteries(self):
         self.assertEqual(get.batteries(1),[[38,12], [43,13], [42,3], [49,23], [3,45]])
         self.assertEqual(get.batteries(2),[[19,20], [1,36], [34,49], [41,21], [26,22]])
         self.assertEqual(get.batteries(3),[[18,34], [32,11], [41,1], [3,35], [39,41]])
+
+    # Change this name when you're working on this part.
+    def t3st_importer_houses(self):
 
         first_house = get.houses(1)[0]
         second_house = get.houses(1)[1]
