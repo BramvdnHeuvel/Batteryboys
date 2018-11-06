@@ -1,4 +1,5 @@
 from resources import get
+import scheme
 import unittest
 
 class Test_Algorithms(unittest.TestCase):
@@ -42,3 +43,16 @@ class Test_Algorithms(unittest.TestCase):
         self.assertEqual(random_house.x, 25)
         self.assertEqual(random_house.y, 31)
         self.assertEqual(random_house.output, 51.81241388)
+
+    def test_dr_manhattan(self):
+        self.assertEqual(scheme.manhattan_distance(10,0,0,0),10)
+        self.assertEqual(scheme.manhattan_distance(0,10,0,0),10)
+        self.assertEqual(scheme.manhattan_distance(0,0,10,0),10)
+        self.assertEqual(scheme.manhattan_distance(0,0,0,10),10)
+        
+        self.assertEqual(scheme.manhattan_distance(10,0,0,10),20)
+        self.assertEqual(scheme.manhattan_distance(-10,0,0,0),10)
+        self.assertEqual(scheme.manhattan_distance(-10,0,10,0),20)
+        self.assertEqual(scheme.manhattan_distance(1,2,3,4),4)
+        self.assertEqual(scheme.manhattan_distance(10,0,100,1000),1090)
+
