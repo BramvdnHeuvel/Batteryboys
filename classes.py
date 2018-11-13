@@ -9,7 +9,7 @@ class Map:
         """Visualize the board, including any potentially made connections"""
         pass # TODO
     
-class House:
+class House(object):
     def __init__(self, X, Y, output, connection):
         self.X = X
         self.Y = Y
