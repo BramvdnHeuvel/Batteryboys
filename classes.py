@@ -8,3 +8,12 @@ class Map:
     def render(self):
         """Visualize the board, including any potentially made connections"""
         pass # TODO
+    
+class House:
+    def __init__(self, X, Y, output, connection):
+        self.X = X
+        self.Y = Y
+        self.output = output
+        self.connection = connection 
+
+        pass    
