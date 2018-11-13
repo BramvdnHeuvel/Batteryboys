@@ -1,10 +1,17 @@
+import config
+
 from resources import get
+from scheme import manhattan_distance
 
 class Map:
     def __init__(self,neighbourhood):
         self.batteries  = get.batteries(neighbourhood)
         self.houses     = get.houses(neighbourhood)
-    
+        self.moneyspent = 0
+
+    def start_algorithm(self):
+        self.__algorithm_first_fit()        
+
     def render(self):
         """Visualize the board, including any potentially made connections"""
         pass # TODO
@@ -36,4 +43,27 @@ class Map:
 
         house.connect(battery)
         self.moneyspent += manhattan_distance(x1,y1,x1,y1) * config.cost_per_grid_section
-    
+    
+    def __algorithm_first_fit(self):
+        for i in range(len(self.houses)):
+            house = self.houses[i]
+
+            for battery in self.batteries:
+                if battery.power > house.output:
+                    self.__connect(house.x,house.y,battery.x,battery.y)
+                    break
+            
+            # =========================================
+            print("Ran out of batteries.")
+            print("Money spent: " + self.moneyspent)
+            print("\nPower left in batteries:")
+            print([battery.power for battery in self.batteries])
+            print("\nHouses left to distribute:")
+            for j in range(len(self.houses) - i):
+                unused_house = self.houses[i+j]
+                print(unused_house.output)
+            raise IndexError("Ran out of batteries to place houses in")
+
+        print("Successfully distributed houses!")
+        print("Money spent: " + self.moneyspent)
+
