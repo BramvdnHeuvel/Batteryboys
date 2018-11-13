@@ -8,9 +8,15 @@ class Map:
         self.batteries  = get.batteries(neighbourhood)
         self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
+        
+        self.executions = []
 
-    def start_algorithm(self):
-        self.__algorithm_first_fit()        
+    def start(self):
+        for function in self.executions:
+            function(self,self.houses,self.batteries)
+
+    def execute(self,func):
+        self.executions.append(func)
 
     def render(self):
         """Visualize the board, including any potentially made connections"""
