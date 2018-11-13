@@ -41,9 +41,6 @@ class Map:
 
         return self.connect(house,battery,must_connect_to_battery)
 
-
-    
-
     def __find_object(self,x,y):
         """Find the object that is located on a given location."""
         for battery in self.batteries:
@@ -57,25 +54,4 @@ class Map:
         return None
 
 
-    def __algorithm_first_fit(self):
-        for i in range(len(self.houses)):
-            house = self.houses[i]
 
-            for battery in self.batteries:
-                if battery.power > house.output:
-                    self.__connect(house.x,house.y,battery.x,battery.y)
-                    break
-            
-            # =========================================
-            print("Ran out of batteries.")
-            print("Money spent: " + self.moneyspent)
-            print("\nPower left in batteries:")
-            print([battery.power for battery in self.batteries])
-            print("\nHouses left to distribute:")
-            for j in range(len(self.houses) - i):
-                unused_house = self.houses[i+j]
-                print(unused_house.output)
-            raise IndexError("Ran out of batteries to place houses in")
-
-        print("Successfully distributed houses!")
-        print("Money spent: " + self.moneyspent)
