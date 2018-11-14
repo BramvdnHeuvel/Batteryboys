@@ -1,19 +1,19 @@
-# werkt alleen op wijk 1 omdat bij de batterij het decimale getal nog niet goed wordt uitgelezen
-
 import re
 
-INPUT='wijk1_batterijen.txt'
+INPUT='wijk3_batterijen.txt'
 
 # save the location and battery storage of battery
 battery_list=[]
 with open(INPUT,'r') as file:
     next(file)
     for line in file:
-        result = re.findall(r'\d+', line)
+        result = re.findall(r'\d+.?\d*', line)
+        
         battery_list.append(result)
     x = battery_list[0][0]
     y = battery_list[0][1]    
     capacity = battery_list[0][2]
+
       
 class Battery(object):
     """
