@@ -10,6 +10,12 @@ class House:
         """Connect the house to another object. The route also needs to be determined here."""
 
         pass # TODO
+    
+    def store(self,power_amount):
+        """Increase its output, in case a house is connected to another house.
+        If the house is already connected, pass on the energy to its connection."""
+
+        pass # TODO
 
 
 class Battery:
