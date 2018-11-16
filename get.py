@@ -1,7 +1,7 @@
 from BatteryClass import Battery
 from HouseClass import House
 import re
-INPUT='wijk1_batterijen.txt'
+INPUT= '/resources/wijk1_batterijen.txt'
 
 class get:
     def __init__(self,x,y,output):
