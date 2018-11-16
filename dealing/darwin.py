@@ -32,7 +32,7 @@ def __calculate_score(individual, house_list=house_list, battery_list=battery_li
         # Connect the house if it still fits.
         if house.output <= battery.power:
             house.connect(battery)
-    score = sum([len(battery) for battery in batteries])
+    score = sum([len(battery) for battery in batteries]) - sum([battery.power for battery in batteries])
 
     for battery in batteries:
         battery.reset()
