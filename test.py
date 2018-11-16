@@ -1,9 +1,9 @@
-from resources import get
+import get
 import scheme
 import unittest
 
-from resources.BatteryClass import Battery
-from HouseClass import House
+from classes.battery import Battery
+from classes.house import House
 
 class Test_Algorithms(unittest.TestCase):
 
@@ -34,15 +34,11 @@ class Test_Algorithms(unittest.TestCase):
         self.assertEqual(battery.max_capacity, 1500)
         self.assertEqual(battery.power, 1000)
 
-    def test_house_class(self):
-        house = Houses()
-
-
     # Change this name when you're working on this part.
     def t3st_importer_batteries(self):
-        self.assertEqual(get.batteries(1),[[38,12,1507.0], [43,13,1507.0], [42,3,1507.0], [49,23,1507.0], [3,45,1507.0]])
-        self.assertEqual(get.batteries(2),[[19,20,1508.25], [1,36,1508.25], [34,49],1508.25, [41,21,1508.25], [26,22,1508.25]])
-        self.assertEqual(get.batteries(3),[[18,34,1506.75], [32,11,1506.75], [41,1,1506.75], [3,35,1506.75], [39,41,1506.75]])
+        self.assertEqual(get.batteries(1),[Battery(38,12,1507.0), Battery(43,13,1507.0), Battery(42,3,1507.0), Battery(49,23,1507.0), Battery(3,45,1507.0)])
+        self.assertEqual(get.batteries(2),[Battery(19,20,1508.25), Battery(1,36,1508.25), Battery(34,49,1508.25), Battery(41,21,1508.25), Battery(26,22,1508.25)])
+        self.assertEqual(get.batteries(3),[Battery(18,34,1506.75), Battery(32,11,1506.75), Battery(41,1,1506.75), Battery(3,35,1506.75), Battery(39,41,1506.75)])
 
     # Change this name when you're working on this part.
     def t3st_importer_houses(self):
