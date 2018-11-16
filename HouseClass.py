@@ -10,34 +10,18 @@ class House:
         self.output = output
         self.connection = connection # (bool)
         
-    # def coordinaten(self):
+    # def X(self):
+
+
     #     file = pd.read_csv("wijk1_huizen.csv")
     #     frame = pd.DataFrame(file)
+    #     # print(frame)
     #     X_axis = frame["x"]
-    #     Y_axis = frame["y"]
-        
     #     print(X_axis)
     #     for x in X_axis:
-    #         self.X_coordinate = X_axis[x]
-        
-    #     for y in Y_axis:
-    #         self.Y_coordinate = Y_axis[y]
-    #     coordinate = [self.X_coordinate, self.Y_coordinate]
-    #     return coordinate
-
-
-    def X(self):
-
-
-        file = pd.read_csv("wijk1_huizen.csv")
-        frame = pd.DataFrame(file)
-        # print(frame)
-        X_axis = frame["x"]
-        print(X_axis)
-        for x in X_axis:
-            X_coordinate = x
-            print(X_coordinate)
-        return X_coordinate
+    #         X_coordinate = x
+    #         print(X_coordinate)
+    #     return X_coordinate
 
 
     def Y(self):
