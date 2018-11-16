@@ -16,12 +16,6 @@ class get:
 
         pass # TODO
     
-    def store(self,power_amount):
-        """Increase its output, in case a house is connected to another house.
-        If the house is already connected, pass on the energy to its connection."""
-
-        pass # TODO
-
     
     def store(self,power_amount):
         """Remove a certain amount of capacity that is being taken."""
@@ -29,21 +23,21 @@ class get:
 
 
     def load_batteries(self, filename):
-    """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
-    
-    battery_list=[]
-    with open(INPUT,'r') as file:
-        next(file)
-        for line in file:
-            result = re.findall(r'\d+.?\d*\b', line)
-            x = result[0]
-            y = result[1]
-            capacity = result[2]
-            battery_list.append(Battery(x, y, capacity))
-        return(battery_list)
+        """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
+        
+        battery_list=[]
+        with open(INPUT,'r') as file:
+            next(file)
+            for line in file:
+                result = re.findall(r'\d+.?\d*\b', line)
+                x = result[0]
+                y = result[1]
+                capacity = result[2]
+                battery_list.append(Battery(x, y, capacity))
+            return(battery_list)
 
 
-def houses(neighbourhood):
-    """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
+    def houses(neighbourhood):
+        """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
 
-    pass # TODO
+        pass # TODO
