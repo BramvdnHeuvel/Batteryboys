@@ -1,5 +1,5 @@
-from BatteryClass import Battery
-from HouseClass import House
+from classes.battery import Battery
+from classes.house import House
 import re
 INPUT= '/resources/wijk1_batterijen.txt'
 
