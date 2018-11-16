@@ -1,7 +1,10 @@
 from BatteryClass import Battery
 from HouseClass import House
 import re
+import pandas as pd
 INPUT='wijk1_batterijen.txt'
+INPUT_HOUSE = 'resources/wijk1_huizen.csv'
+
 
 class get:
     def __init__(self,x,y,output):
@@ -37,7 +40,15 @@ class get:
             return(battery_list)
 
 
-    def houses(neighbourhood):
+    def load_houses(neighbourhood):
         """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
-
+        data = pd.read_csv(INPUT_HOUSE)
+        df = pd.DataFrame(data)
+        huizen = []
+        for row in df:
+            x = df['x']
+            y = df['y']
+            output = df['max. output']
+            huizen.append(House(x, y, output))
+        print(huizen)
         pass # TODO

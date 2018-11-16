@@ -1,8 +1,6 @@
 import pandas as pd
 class House:
     # open the first file, go through houses
-    file = pd.read_csv("wijk1_huizen.csv")
-    frame = pd.DataFrame(file)
 
     def __init__(self, x, y, output, connection):
         self.x = x 
