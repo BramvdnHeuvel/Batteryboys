@@ -1,3 +1,7 @@
+from BatteryClass import Battery
+import re
+INPUT='wijk1_batterijen.txt'
+
 class House:
     def __init__(self,x,y,output):
         self.x              = int(x)
@@ -25,6 +29,7 @@ class Battery:
         self.max_capacity   = int(max_capacity)
         self.power          = int(max_capacity)
 
+
     def store(self,power_amount):
         """Remove a certain amount of capacity that is being taken."""
         self.power = self.power - power_amount
@@ -33,8 +38,17 @@ class Battery:
 
 def batteries(neighbourhood):
     """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
-
-    pass # TODO
+    
+    battery_list=[]
+    with open(INPUT,'r') as file:
+        next(file)
+        for line in file:
+            result = re.findall(r'\d+.?\d*\b', line)
+            x = result[0]
+            y = result[1]
+            capacity = result[2]
+            battery_list.append(Battery(x, y, capacity))
+        return(battery_list)
 
 
 def houses(neighbourhood):

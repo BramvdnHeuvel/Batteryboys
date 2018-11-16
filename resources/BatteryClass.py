@@ -1,25 +1,11 @@
-import re
-
-INPUT='wijk3_batterijen.txt'
-
-# save the location and battery storage of battery
-battery_list=[]
-with open(INPUT,'r') as file:
-    next(file)
-    for line in file:
-        result = re.findall(r'\d+.?\d*', line)
-        
-        battery_list.append(result)
-    x = battery_list[0][0]
-    y = battery_list[0][1]    
-    capacity = battery_list[0][2]
-
-      
 class Battery(object):
     """
-    Representation of the Batteries
+    Representation of a Battery containing the battery id, its x and y coordinate, and its current capacity
     """
     def __init__(self, battery_id, x_coordinate, y_coordinate, capacity):
+        """
+        initialize battery characteristics
+        """
         self.battery_id = battery_id
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
@@ -27,6 +13,9 @@ class Battery(object):
 
 
     def check_storage_space(self):
+        """
+        check if battery has storage space left
+        """    
         if self.capacity > 0:
             return True
         else:
