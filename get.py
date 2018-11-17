@@ -6,7 +6,7 @@ INPUT='/resources/wijk1_batterijen.txt'
 INPUT_HOUSE = '/resources/wijk1_huizen.csv'
 
 
-class get:
+class Get:
     def __init__(self,x,y,output):
         self.x              = int(x)
         self.y              = int(y)
@@ -25,11 +25,11 @@ class get:
         self.power = self.power - power_amount
 
 
-    def load_batteries(self, neigherbourhood):
+    def load_batteries(self, filename):
         """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
         
         battery_list=[]
-        with open(INPUT,'r') as file:
+        with open(filename,'r') as file:
             next(file)
             for line in file:
                 result = re.findall(r'\d+.?\d*\b', line)
@@ -39,7 +39,7 @@ class get:
                 battery_list.append(Battery(x, y, capacity))
             return(battery_list)
             
-    def load_houses(self, neighbourhood):
+    def load_houses(self, filename):
         """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
         data = pd.read_csv(INPUT_HOUSE)
         df = pd.DataFrame(data)
@@ -49,5 +49,4 @@ class get:
             y = df['y']
             output = df['max. output']
             huizen.append(House(x, y, output))
-        
-        pass # TODO
+        return(huizen)
