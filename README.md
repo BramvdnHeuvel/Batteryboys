@@ -11,5 +11,4 @@ In de resources map staan alle bestanden die worden uitgelezen. De classes map b
 Om de code te draaien met de standaardconfiguratie gebruik de instructie:
 python main.py (*nog niet werkende op moment van schrijven).
    
-###### Auteurs (Authors):
-Bram van den Heuvel, Wiebe Jelsma en Max Baneke
+###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.
