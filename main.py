@@ -1,4 +1,4 @@
-from map import Map
+from classes.map import Map
 
 
 grid = Map(1)

@@ -2,8 +2,8 @@ from classes.battery import Battery
 from classes.house import House
 import re
 import pandas as pd
-INPUT='wijk1_batterijen.txt'
-INPUT_HOUSE = 'resources/wijk1_huizen.csv'
+INPUT='/resources/wijk1_batterijen.txt'
+INPUT_HOUSE = '/resources/wijk1_huizen.csv'
 
 
 class get:
@@ -25,7 +25,7 @@ class get:
         self.power = self.power - power_amount
 
 
-    def load_batteries(self, filename):
+    def load_batteries(self, neigherbourhood):
         """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
         
         battery_list=[]
@@ -38,9 +38,8 @@ class get:
                 capacity = result[2]
                 battery_list.append(Battery(x, y, capacity))
             return(battery_list)
-
-
-    def load_houses(neighbourhood):
+            
+    def load_houses(self, neighbourhood):
         """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
         data = pd.read_csv(INPUT_HOUSE)
         df = pd.DataFrame(data)
@@ -50,5 +49,5 @@ class get:
             y = df['y']
             output = df['max. output']
             huizen.append(House(x, y, output))
-        print(huizen)
+        
         pass # TODO
