@@ -3,7 +3,7 @@ Dit is de repository voor het maken van een schema wat huizen zo efficiënt moge
 
 <b>
   Vereisten
-  <b/>
+<b/>
   In requirements.txt staan de benodigde packages. Alle code in de repository is geschreven in Python 3.6.
   
   <b>
