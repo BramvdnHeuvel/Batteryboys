@@ -42,11 +42,10 @@ class Get:
     def load_houses(self, filename):
         """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
         data = pd.read_csv(INPUT_HOUSE)
-        df = pd.DataFrame(data)
         huizen = []
-        for row in df:
-            x = df['x']
-            y = df['y']
-            output = df['max. output']
+        for index, row in data.iterrows():
+            x = row['x']
+            y = row['y']
+            output = row['max. output']
             huizen.append(House(x, y, output))
-        return(huizen)
+        return huizen
