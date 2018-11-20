@@ -13,9 +13,9 @@ def __load_batteries(filename):
         next(file)
         for line in file:
             result = re.findall(r'\d+.?\d*\b', line)
-            x = result[0]
-            y = result[1]
-            capacity = result[2]
+            x = int(result[0])
+            y = int(result[1])
+            capacity = float(result[2])
             battery_list.append(Battery(x, y, capacity))
     return battery_list
         

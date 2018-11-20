@@ -6,9 +6,9 @@ class Battery(object):
         """
         initialize battery characteristics
         """
-        self.x = int(x_coordinate)
-        self.y = int(y_coordinate)
-        self.capacity = float(capacity)
+        self.x = (x_coordinate)
+        self.y = (y_coordinate)
+        self.capacity = (capacity)
         self.power = float(capacity)
 
     def __eq__(self, other):
