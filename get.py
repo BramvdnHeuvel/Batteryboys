@@ -16,7 +16,7 @@ def store(self,power_amount):
     self.power = self.power - power_amount
 
 
-def load_batteries(self, filename):
+def batteries(self, filename):
     """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
     
     battery_list=[]
@@ -30,7 +30,7 @@ def load_batteries(self, filename):
             battery_list.append(Battery(x, y, capacity))
     print(battery_list)
         
-def load_houses(self, filename):
+def houses(self, filename):
     """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
     data = pd.read_csv(INPUT_HOUSE)
     huizen = []
