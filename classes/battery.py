@@ -15,6 +15,9 @@ class Battery(object):
         if self.x == other.x and self.y == other.y:
             return True
         return False
+    
+    def __repr__(self):
+        return '<Battery x={} y={} cap={}>'.format(self.x,self.y,self.capacity)
 
     def check_storage_space(self):
         """
