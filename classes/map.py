@@ -1,12 +1,11 @@
 import config
-
-from resources import get
+from get import Get
 from scheme import manhattan_distance
 
 class Map:
     def __init__(self,neighbourhood):
-        self.batteries  = get.batteries(neighbourhood)
-        self.houses     = get.houses(neighbourhood)
+        self.batteries  = self.load_batteries(f'/resources/wijk{neighbourhood}_batterijen.txt')
+        self.houses     = self.load_houses(f'/resources/wijk{neighbourhood}_huizen.csv')
         self.moneyspent = 0
         
         self.executions = []

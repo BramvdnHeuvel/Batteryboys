@@ -2,11 +2,11 @@ import pandas as pd
 class House:
     # open the first file, go through houses
 
-    def __init__(self, x, y, output, connection):
+    def __init__(self, x, y, output):
         self.x = x 
         self.y = y 
         self.output = output
-        self.connection = connection # (bool)
+        #self.connection = connection # (bool)
         
     # def X(self):
 
@@ -22,21 +22,21 @@ class House:
     #     return X_coordinate
 
 
-    def Y(self):
-        file = pd.read_csv("wijk1_huizen.csv")
-        frame = pd.DataFrame(file)
-        Y_axis = frame["y"]
-        for y in Y_axis:
-            Y_coordinate = y
-        return Y_coordinate
+    # def Y(self):
+    #     file = pd.read_csv("wijk1_huizen.csv")
+    #     frame = pd.DataFrame(file)
+    #     Y_axis = frame["y"]
+    #     for y in Y_axis:
+    #         Y_coordinate = y
+    #     return Y_coordinate
 
 
-    def Output(self):
-        file = pd.read_csv("wijk1_huizen.csv")
-        frame = pd.DataFrame(file)
-        max_output = frame["max. output"]
+    # def Output(self):
+    #     file = pd.read_csv("wijk1_huizen.csv")
+    #     frame = pd.DataFrame(file)
+    #     max_output = frame["max. output"]
 
-        for z in max_output:
-            output = z
-        return output
+    #     for z in max_output:
+    #         output = z
+    #     return output
          
