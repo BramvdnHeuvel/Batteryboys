@@ -6,10 +6,15 @@ class Battery(object):
         """
         initialize battery characteristics
         """
-        self.x_coordinate = x_coordinate
-        self.y_coordinate = y_coordinate
-        self.capacity = capacity
+        self.x = int(x_coordinate)
+        self.y = int(y_coordinate)
+        self.capacity = float(capacity)
+        self.power = float(capacity)
 
+    def __eq__(self, other):
+        if self.x == other.x and self.y == other.y:
+            return True
+        return False
 
     def check_storage_space(self):
         """
@@ -19,3 +24,6 @@ class Battery(object):
             return True
         else:
             return False
+    
+    def store(self, amount):
+        self.power = self.power - amount
