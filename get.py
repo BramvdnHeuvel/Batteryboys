@@ -31,10 +31,10 @@ def __load_houses(filename):
     return huizen
 
 def batteries(neighbourhood):
-    return __load_batteries('resources\wijk{}_batterijen.txt'.format(neighbourhood))
+    return __load_batteries('resources/wijk{}_batterijen.txt'.format(neighbourhood))
 
 def houses(neighbourhood):
-    return __load_houses('resources\wijk{}_huizen.csv'.format(neighbourhood))
+    return __load_houses('resources/wijk{}_huizen.csv'.format(neighbourhood))
 
 
 print(batteries(1))
