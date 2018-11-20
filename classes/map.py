@@ -1,10 +1,11 @@
 import config
 from scheme import manhattan_distance
+import get
 
 class Map:
     def __init__(self,neighbourhood):
         self.batteries  = get.batteries(neighbourhood)
-        self.houses     = get.batteries(neighbourhood)
+        self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
         
         self.executions = []
