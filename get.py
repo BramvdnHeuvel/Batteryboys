@@ -5,18 +5,7 @@ import pandas as pd
 INPUT='/resources/wijk1_batterijen.txt'
 INPUT_HOUSE = '/resources/wijk1_huizen.csv'
  
-def connect(self,connected_obect):
-    """Connect the house to another object. The route also needs to be determined here."""
-
-    pass # TODO
-
-
-def store(self,power_amount):
-    """Remove a certain amount of capacity that is being taken."""
-    self.power = self.power - power_amount
-
-
-def batteries(self, filename):
+def __load_batteries(filename):
     """Gain a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
     
     battery_list=[]
@@ -28,11 +17,11 @@ def batteries(self, filename):
             y = result[1]
             capacity = result[2]
             battery_list.append(Battery(x, y, capacity))
-    print(battery_list)
+    return battery_list
         
-def houses(self, filename):
+def __load_houses(filename):
     """Gain a list of houses from a given neighbourhood. The neighbourhood is an integer."""
-    data = pd.read_csv(INPUT_HOUSE)
+    data = pd.read_csv(filename)
     huizen = []
     for index, row in data.iterrows():
         x = row['x']
@@ -40,3 +29,13 @@ def houses(self, filename):
         output = row['max. output']
         huizen.append(House(x, y, output))
     return huizen
+
+def batteries(neighbourhood):
+    return __load_batteries('resources\wijk{}_batterijen.txt'.format(neighbourhood))
+
+def houses(neighbourhood):
+    return __load_houses('resources\wijk{}_huizen.csv'.format(neighbourhood))
+
+
+print(batteries(1))
+print(batteries(2))

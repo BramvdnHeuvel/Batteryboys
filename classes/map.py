@@ -3,8 +3,8 @@ from scheme import manhattan_distance
 
 class Map:
     def __init__(self,neighbourhood):
-        self.batteries  = load_batteries(f'/resources/wijk{neighbourhood}_batterijen.txt')
-        self.houses     = load_houses(f'/resources/wijk{neighbourhood}_huizen.csv')
+        self.batteries  = get.batteries(neighbourhood)
+        self.houses     = get.batteries(neighbourhood)
         self.moneyspent = 0
         
         self.executions = []
