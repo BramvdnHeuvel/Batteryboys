@@ -11,6 +11,10 @@ class House:
         if self.x == other.x and self.y == other.y:
             return True
         return False
+
+
+    def connection(self, battery):
+        self.connected = battery
     
     def __repr__(self):
         return '<House x={} y={} out={}>'.format(self.x,self.y,self.output)
