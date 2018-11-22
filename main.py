@@ -1,5 +1,5 @@
 from classes.map import Map
-
+import random
 
 grid = Map(1)
 
@@ -7,6 +7,9 @@ grid = Map(1)
 def foo(self,houses,batteries):
     
     connected = []
+    random.shuffle(batteries)
+    random.shuffle(houses)
+
     for battery in self.batteries:
         for house in self.houses:
             if not house in connected and battery.capacity > house.output:
