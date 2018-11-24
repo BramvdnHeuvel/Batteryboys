@@ -1,13 +1,13 @@
 import random
 
 class Generation:
-    def __init__(self,parent_generation,houses,batteries):
+    def __init__(self, houses, batteries, parent_generation):
         self.houses = houses
         self.batteries = batteries
 
-        self.generation = 
+        self.generation = []
 
-    def __natural_selection(self,parent_one,parent_two,off_put=0.2):
+    def __create_child(self, parent_one, parent_two, off_put=0.2):
         child = []
 
         for house_parents in zip(parent_one, parent_two):
@@ -19,7 +19,7 @@ class Generation:
             elif decision < (1-off_put):
                 child.append(house_parents[1])
             else:
-                child.append(random.randint(0,random_size-1))
+                child.append(random.randint(0,len(self.batteries)-1))
         
         return child
 
