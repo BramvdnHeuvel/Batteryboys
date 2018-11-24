@@ -1,8 +1,8 @@
 from sample import FakeBattery, FakeHouse
 import random
 
-battery_list = [FakeBattery(7),  FakeBattery(7)]
-house_list = [FakeHouse(2), FakeHouse(5), FakeHouse(1), FakeHouse(2), FakeHouse(4)]
+battery_list = [FakeBattery(150),  FakeBattery(175)]
+house_list = [FakeHouse(i) for i in range(25) ]
 
 def __natural_selection(parent_one, parent_two, random_size=len(battery_list), off_put=0.2):
     child = []
@@ -32,15 +32,19 @@ def __calculate_score(individual, house_list=house_list, battery_list=battery_li
         # Connect the house if it still fits.
         if house.output <= battery.power:
             house.connect(battery)
-    score = sum([len(battery) for battery in batteries]) - sum([battery.power for battery in batteries])
+    score = sum([battery.power for battery in batteries]) - sum([battery.max_capacity for battery in batteries])
 
     for battery in batteries:
         battery.reset()
 
+    if score > 0:
+        print(score)
+    if score == 0:
+        print("That happens suspiciously often.")
     return score
 
 
-def __generate_first_generation(houses=house_list, batteries=battery_list, population=2):
+def __generate_first_generation(houses=house_list, batteries=battery_list, population=400):
     return [[random.randint(0,len(batteries)-1) for j in houses] for i in range(2*population)]
 
 def __generate_new_generation(old_generation):
@@ -62,16 +66,23 @@ def __generate_new_generation(old_generation):
 
     return new_generation    
 
-def generate_algorithm(amount=20, maximum=len(house_list)):
+def generate_algorithm(amount=20, maximum=len(house_list), house_list=house_list, battery_list=battery_list):
     generation = __generate_first_generation()
     generation = [(__calculate_score(individual),individual) for individual in generation]
-    generation.sort(reverse=True)
+    generation.sort(reverse=True)20
+
+    houses = house_list
+    batteries = battery_list
 
     for i in range(amount):
-        if generation[0][0] == maximum:
+        maximal_score = sum([house.output for house in houses]) - 
+
+        if generation[0][0] == 0: # TODO: Take punishment into account
+            print('Found optimal solution!')
             break
 
-        print("Generation {}:\t{}".format(i,generation))
+        if i % 10 == 0:
+            print("Generation {}:\t{}".format(i,generation[0]))
 
         generation = __generate_new_generation(generation)
         generation = [(__calculate_score(individual),individual) for individual in generation]
@@ -79,4 +90,4 @@ def generate_algorithm(amount=20, maximum=len(house_list)):
 
     return generation[0]
 
-print(generate_algorithm())
+print(generate_algorithm(200))
