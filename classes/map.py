@@ -1,7 +1,6 @@
 import config
-
-from resources import get
 from scheme import manhattan_distance
+import get
 
 class Map:
     def __init__(self,neighbourhood):
