@@ -5,8 +5,6 @@ import unittest
 from classes.battery import Battery
 from classes.house import House
 
-from dealing.darwin import __generate_first_generation, __generate_new_generation
-
 class Test_Algorithms(unittest.TestCase):
 
     # This class tests functions and makes sure they work.
@@ -22,9 +20,6 @@ class Test_Algorithms(unittest.TestCase):
 
     def good_thing_this_function_is_ignored(self):
         self.assertEqual(1,2)
-    
-    def test_stuff(self):
-        __generate_new_generation(__generate_first_generation())
 
     def test_battery_class(self):
         battery = Battery(1,2,1500)
