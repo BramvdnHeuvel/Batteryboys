@@ -1,5 +1,29 @@
 import random
 
+def create_generation(houses, batteries, population=4, mutation=0.2):
+    generation_individuals = []
+
+    for i in range(population):
+        individual = __create_first_individual(houses, batteries)
+        generation_individuals.append(individual)
+    
+    return Generation(houses, batteries, generation_individuals, mutation)
+
+
+def __create_first_individual(houses, batteries):
+    individual = []
+
+    for i in range(len(houses)):
+        connection = random.randint(0, len(batteries)-1)
+        individual.append(connection)
+    
+    return individual
+
+
+def distance(house, battery):
+    return abs(house.x - battery.x) + abs(house.y - battery.y)
+
+
 class Generation:
     def __init__(self, houses, batteries, generation, mutation):
         self.houses = houses
