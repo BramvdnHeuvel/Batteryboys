@@ -20,7 +20,7 @@ class Test_Algorithms(unittest.TestCase):
 
     def good_thing_this_function_is_ignored(self):
         self.assertEqual(1,2)
-    
+
     def test_battery_class(self):
         battery = Battery(1,2,1500)
 

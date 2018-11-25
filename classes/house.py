@@ -13,8 +13,9 @@ class House:
         return False
 
 
-    def connection(self, battery):
+    def connect(self, battery):
         self.connected = battery
+        battery.store(self.output)
     
     def __repr__(self):
         return '<House x={} y={} out={}>'.format(self.x,self.y,self.output)
