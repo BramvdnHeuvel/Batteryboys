@@ -3,8 +3,7 @@ import random
 
 grid = Map(3)
 
-@grid.execute
-def foo(self,houses,batteries):
+def first_fit_batteries(self,houses,batteries):
     
     connected = []
     random.shuffle(batteries)
@@ -19,6 +18,8 @@ def foo(self,houses,batteries):
                 connected.append(house)
                 print(house)
     print(len(connected)) 
+
+@grid.execute
 def first_fit_houses(self, houses, batteries):
     connected = []
     random.shuffle(batteries)
