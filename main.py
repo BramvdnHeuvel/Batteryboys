@@ -1,7 +1,7 @@
 from classes.map import Map
 import random
 
-grid = Map(1)
+grid = Map(3)
 
 @grid.execute
 def foo(self,houses,batteries):
@@ -19,8 +19,18 @@ def foo(self,houses,batteries):
                 connected.append(house)
                 print(house)
     print(len(connected)) 
-
-    # Write a specific algorithm to execute here.
-    # nu print het 150 huizen, allemaal in een v/d 5 batterijen. zien nu welke batterij + huis.
+def first_fit_houses(self, houses, batteries):
+    connected = []
+    random.shuffle(batteries)
+    random.shuffle(houses)
+    for house in self.houses:
+        for battery in self.batteries:
+            if not house in connected and battery.capacity > house.output:
+                house.connection(battery)
+                print(battery)
+                battery.capacity -= house.output
+                connected.append(house)
+                print(house)
+    print(len(connected)) 
 
 grid.start()
