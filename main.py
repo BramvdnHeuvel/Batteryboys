@@ -1,7 +1,7 @@
 from classes.map import Map
 import random
 
-grid = Map(3)
+grid = Map(1)
 
 def first_fit_batteries(self,houses,batteries):
     
@@ -12,7 +12,7 @@ def first_fit_batteries(self,houses,batteries):
     for battery in self.batteries:
         for house in self.houses:
             if not house in connected and battery.capacity > house.output:
-                house.connection(battery)
+                house.connect(battery)
                 print(battery)
                 battery.capacity -= house.output
                 connected.append(house)
@@ -27,7 +27,7 @@ def first_fit_houses(self, houses, batteries):
     for house in self.houses:
         for battery in self.batteries:
             if not house in connected and battery.capacity > house.output:
-                house.connection(battery)
+                house.connect(battery)
                 print(battery)
                 battery.capacity -= house.output
                 connected.append(house)
