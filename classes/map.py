@@ -27,7 +27,6 @@ class Map:
             raise TypeError("Cannot connect to a non-Battery object")
 
         house.connect(battery)
-        battery.store(house.output)
         self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section
 
     def render(self):

@@ -1,4 +1,3 @@
-import pandas as pd
 class House:
     # open the first file, go through houses
 
@@ -6,6 +5,7 @@ class House:
         self.x = x 
         self.y = y 
         self.output = output
+        self.connected = None
         
     def __eq__(self, other):
         if self.x == other.x and self.y == other.y:
