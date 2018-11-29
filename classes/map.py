@@ -29,10 +29,6 @@ class Map:
         house.connect(battery)
         self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section + 5 * 5000
 
-    def render(self):
-        """Visualize the board, including any potentially made connections"""
-        pass # TODO
-
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         house = self.__find_object(x1,y1)
         battery = self.__find_object(x2,y2) # Note: doesn't have to be battery, per say

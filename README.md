@@ -1,5 +1,5 @@
 # Batteryboys
-Dit is de repository voor het maken van een schema wat huizen zo efficiënt mogelijk verdeeld over een aantal batterijen.
+Dit is de repository voor het maken van een schema wat huizen zo efficiënt mogelijk koppelt aan een aantal batterijen.
 
 ### Vereisten
 In requirements.txt staan de benodigde packages. Alle code in de repository is geschreven in Python 3.6.
