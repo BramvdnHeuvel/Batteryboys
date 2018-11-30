@@ -1,23 +1,31 @@
+import matplotlib.pyplot as plt
+
 import random
 import time
 
-def evolve_victor(self, houses, batteries, population=32):
-    generation = __create_generation(houses, batteries, population, mutation=0.003)
+def evolve_victor(self, houses, batteries, population=4):
+    generation = __create_generation(houses, batteries, population, mutation=0.03)
+    best_cost = []
+
+    for i in range(10000):
+        next(generation)
+
+        score = generation.find_best_one()[1]
+
+        if score[0] < 150:
+            best_cost.append(5300)
+        else:
+            best_cost.append(-1*score[2])
+
+        if (i + 1) % 1000 == 0:
+            print(f"Generation {i+1} reached!")
+    
+    plt.plot(range(len(best_cost)),best_cost,'r-')
+    plt.show()
 
     victor = generation.find_best_one()
     scores = victor[1]
-    print(f'\nGeneration {0}:')
     print(f'{victor[0]}\nAantal huizen:\t{scores[0]}\nStroom vrij:\t{-1*scores[1]}\nKosten:\t\t{-1*scores[2]}')
-
-
-    for i in range(1000):
-        next(generation)
-        if (i + 1) % 100 == 0:
-            input()
-            victor = generation.find_best_one()
-            scores = victor[1]
-            print(f'\nGeneration {i+1}:')
-            print(f'{victor[0]}\nAantal huizen:\t{scores[0]}\nStroom vrij:\t{-1*scores[1]}\nKosten:\t\t{-1*scores[2]}')
     
 # -------------------------------------------------------------------------------------------
 
@@ -106,7 +114,7 @@ class DEGeneration:
         if score_one[0] != score_two[0]:
             score_one = score_one[0]
             score_two = score_two[0]
-        elif abs(score_one[1] != score_two[1]) > 0.0001:
+        elif abs(score_one[1] - score_two[1]) > 0.0001:
             score_one = score_one[1]
             score_two = score_two[1]
         else:
