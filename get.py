@@ -36,3 +36,4 @@ def batteries(neighbourhood):
 
 def houses(neighbourhood):
     return __load_houses('resources/wijk{}_huizen.csv'.format(neighbourhood))
+

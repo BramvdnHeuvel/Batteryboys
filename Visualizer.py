@@ -3,6 +3,7 @@ from classes.battery import Battery
 from classes.house import House
 from get import __load_batteries
 from get import __load_houses
+import random
 
 def visualization(self, huizen, battery_list):      
          # plot batteries and houses
@@ -17,3 +18,8 @@ def visualization(self, huizen, battery_list):
         plt.grid(True)
 
         plt.show()
+
+# def visualize_connections(self)
+#         first line between coordinates of house and x or y coordinate from battery(randomly chosen) and 
+#         depending on this decision y or x coordinate from house
+#         second line 
