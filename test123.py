@@ -3,6 +3,7 @@ from classes.house import House
 import re
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
 
 INPUT='resources/wijk1_batterijen.txt'
 INPUT_HOUSE = 'resources/wijk1_huizen.csv'
@@ -42,3 +43,18 @@ plt.scatter(x1, y1, color='blue')
 plt.grid(True)
 
 plt.show()
+
+
+
+def first_fit_houses(self, houses, batteries):
+    connected = []
+    random.shuffle(batteries)
+    random.shuffle(houses)
+
+    for house in houses:
+        for battery in batteries:
+            if not house in connected and battery.capacity > house.output:
+                house.connection(battery)
+                battery.capacity -= house.output
+                connected.append(house)
+    return(len(connected))
