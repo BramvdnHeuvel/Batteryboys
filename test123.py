@@ -51,7 +51,7 @@ if random.choice == x:
     # plot first line
     # plot second line
 
-elif random choice == y:
+elif random.choice == y:
     # choose battery x coordinate
     # plot first line
     # plot second line
