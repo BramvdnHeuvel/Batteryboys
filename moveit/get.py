@@ -2,8 +2,8 @@ from classes.battery import Battery
 from classes.house import House
 import re
 import pandas as pd
-INPUT='/resources/wijk1_batterijen.txt'
-INPUT_HOUSE = '/resources/wijk1_huizen.csv'
+INPUT='resources/wijk1_batterijen.txt'
+INPUT_HOUSE = 'resources/wijk1_huizen.csv'
  
 def __load_batteries(filename):
     """Get a list of batteries from a given neighbourhood. The neighbourhood is an integer."""

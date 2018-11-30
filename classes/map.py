@@ -1,11 +1,11 @@
 import config
-from scheme import manhattan_distance
-import get
+from moveit.scheme import manhattan_distance
+import moveit.get
 
 class Map:
     def __init__(self,neighbourhood):
-        self.batteries  = get.batteries(neighbourhood)
-        self.houses     = get.houses(neighbourhood)
+        self.batteries  = moveit.get.batteries(neighbourhood)
+        self.houses     = moveit.get.houses(neighbourhood)
         self.moneyspent = 0
         
         self.executions = []
