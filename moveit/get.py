@@ -2,14 +2,12 @@ from classes.battery import Battery
 from classes.house import House
 import re
 import pandas as pd
-INPUT='resources/wijk1_batterijen.txt'
-INPUT_HOUSE = 'resources/wijk1_huizen.csv'
  
 def __load_batteries(filename):
     """Get a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
     
     battery_list=[]
-    with open(INPUT,'r') as file:
+    with open(filename,'r') as file:
         next(file)
         for line in file:
             result = re.findall(r'\d+.?\d*\b', line)
@@ -22,7 +20,7 @@ def __load_batteries(filename):
 def __load_houses(filename):
     """Get a list of houses from a given neighbourhood. The neighbourhood is an integer."""
     
-    data = pd.read_csv(INPUT_HOUSE)
+    data = pd.read_csv(filename)
     huizen = []
     for index, row in data.iterrows():
         x = row['x']

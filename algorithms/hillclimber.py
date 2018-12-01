@@ -13,7 +13,19 @@
 # else:
 #     swap back
 
-# do this a lot of times     
+# do this a lot of times    
+# 
+# 
+# batterij 1 en batterij 2, huis 1 en huis 2
+# als batterij 1 == batterij 2,
+# stop
+# als huis 1 == huis 2,
+# stop
+# als batterij 1 opslag + huis1 output - huis 2 output <0
+# stop
+# als batterij 2 opslag + huis 2 output - huis 1 output < 0
+# stop
+
 
 import math
 

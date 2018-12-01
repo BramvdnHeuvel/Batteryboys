@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 from classes.battery import Battery
 from classes.house import House
-from get import __load_batteries
-from get import __load_houses
+from moveit.get import __load_batteries
+from moveit.get import __load_houses
 import random
 
 def visualization(self, huizen, battery_list):      
@@ -17,7 +17,7 @@ def visualization(self, huizen, battery_list):
 
         plt.grid(True)
 
-        plt.show()
+        return plt.show()
 
 # def visualize_connections(self)
 #         first line between coordinates of house and x or y coordinate from battery(randomly chosen) and 
