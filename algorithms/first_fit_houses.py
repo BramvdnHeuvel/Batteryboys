@@ -11,5 +11,5 @@ def first_fit_houses(self, houses, batteries):
                 house.connect(battery)
                 battery.capacity -= house.output
                 connected.append(house)
-    return(len(connected))
+    print(len(connected))
 
