@@ -7,9 +7,11 @@ def first_fit_batteries(self,houses,batteries):
     random.shuffle(houses)
 
     for battery in batteries:
+        print(battery)
         for house in houses:
             if not house in connected and battery.capacity > house.output:
                 house.connect(battery)
                 battery.capacity -= house.output
                 connected.append(house)
+                # print(connected)
     print(len(connected)) 

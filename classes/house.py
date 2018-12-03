@@ -1,5 +1,5 @@
 class House:
-    # open the first file, go through houses
+    # open file, go through houses
 
     def __init__(self, x, y, output):
         self.x = x 
@@ -16,6 +16,7 @@ class House:
     def connect(self, battery):
         self.connected = battery
         battery.store(self.output)
+        return self.connected
     
     def __repr__(self):
         return '<House x={} y={} out={}>'.format(self.x,self.y,self.output)
