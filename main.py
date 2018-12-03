@@ -4,7 +4,7 @@ from algorithms.first_fit_houses import first_fit_houses
 from algorithms.first_fit_batteries import first_fit_batteries
 import random
 
-grid = Map(3)
+grid = Map(1)
 grid.execute(first_fit_houses)
 grid.start()
 grid.visualize()
