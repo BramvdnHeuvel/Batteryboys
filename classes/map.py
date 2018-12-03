@@ -50,29 +50,23 @@ class Map:
 
     def visualize(self):
         """Plots houses, batteries, and connections."""
-        x = list(battery.x for battery in self.batteries)
-        y = list(battery.y for battery in self.batteries)
-        x1 = list(house.x for house in self.houses)
-        y1 = list(house.y for house in self.houses)
+        batteries_x = list(battery.x for battery in self.batteries)
+        batteries_y = list(battery.y for battery in self.batteries)
+        houses_x = list(house.x for house in self.houses)
+        houses_y = list(house.y for house in self.houses)
         
-        # # create lines between houses and batteries
-        # random.choice([x, y])
-        # if random.choice == x:
-        #     pass
-        #     # choose battery y coordinate
-        #     # plot first line
-        #     # plot second line
-
-        # elif random.choice == y:
-        #     # choose battery x coordinate
-        #     # plot first line
-        #     # plot second line
-        #     plt.plot(x, y)
+        # get x and y coords of connected battery for each house
+        house_batteries = list(house.connected for house in self.houses)
+        con_batteries_x = list(battery.x for battery in house_batteries)
+        con_batteries_y = list(battery.y for battery in house_batteries)
+        # draw lines from house to batteries
+        for i in range(len(house_batteries)):
+            plt.plot([houses_x[i], con_batteries_x[i]], [houses_y[i], houses_y[i]])
+            plt.plot([con_batteries_x[i], con_batteries_x[i]], [houses_y[i], con_batteries_y[i]])
         
-        
-        # draw points and plot
-        plt.scatter(x, y, color ='red')
-        plt.scatter(x1, y1, color='blue')
+        # draw points and plot      
+        plt.scatter(houses_x, houses_y, color ='red')
+        plt.scatter(batteries_x, batteries_y, color='blue')
         plt.grid(True)
         plt.show()
 

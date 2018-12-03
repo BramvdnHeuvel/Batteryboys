@@ -5,7 +5,6 @@ import pandas as pd
  
 def __load_batteries(filename):
     """Get a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
-    
     battery_list=[]
     with open(filename,'r') as file:
         next(file)
@@ -18,8 +17,7 @@ def __load_batteries(filename):
     return battery_list
         
 def __load_houses(filename):
-    """Get a list of houses from a given neighbourhood. The neighbourhood is an integer."""
-    
+    """Get a list of houses from a given neighbourhood. The neighbourhood is an integer.""" 
     data = pd.read_csv(filename)
     huizen = []
     for index, row in data.iterrows():
