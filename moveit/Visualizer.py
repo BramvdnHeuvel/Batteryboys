@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+from classes import house
 import matplotlib.pyplot as plt
 from classes.battery import Battery
 from classes.house import House
