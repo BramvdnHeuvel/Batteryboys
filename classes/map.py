@@ -65,12 +65,12 @@ class Map:
         colors = ['g', 'y', 'm', 'k', 'c']
 
         for i in range(len(house_batteries)):
-            plt.plot([houses_x[i], con_batteries_x[i]], [houses_y[i], houses_y[i]], color = colors[con_batteries_id[i]])
-            plt.plot([con_batteries_x[i], con_batteries_x[i]], [houses_y[i], con_batteries_y[i]], color = colors[con_batteries_id[i]])
+            plt.plot([houses_x[i], con_batteries_x[i]], [houses_y[i], houses_y[i]], color = colors[con_batteries_id[i]], zorder = 1)
+            plt.plot([con_batteries_x[i], con_batteries_x[i]], [houses_y[i], con_batteries_y[i]], color = colors[con_batteries_id[i]], zorder = 1)
 
         # draw points and plot      
-        plt.scatter(houses_x, houses_y, color ='red')
-        plt.scatter(batteries_x, batteries_y, color='blue')
+        plt.scatter(houses_x, houses_y, color ='red', zorder = 2)
+        plt.scatter(batteries_x, batteries_y, color='blue', zorder = 2)
         plt.title("Smart Grid")
         plt.grid(True)
         plt.show()
