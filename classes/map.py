@@ -1,6 +1,7 @@
 import config
 from moveit.scheme import manhattan_distance
 import moveit.get
+import matplotlib.pyplot as plt
 
 class Map:
     def __init__(self,neighbourhood):
@@ -47,5 +48,31 @@ class Map:
         
         return None
 
+    def visualize(self):
+        """Plots houses, batteries, and connections."""
+        x = list(battery.x for battery in self.batteries)
+        y = list(battery.y for battery in self.batteries)
+        x1 = list(house.x for house in self.houses)
+        y1 = list(house.y for house in self.houses)
+        
+        # # create lines between houses and batteries
+        # random.choice([x, y])
+        # if random.choice == x:
+        #     pass
+        #     # choose battery y coordinate
+        #     # plot first line
+        #     # plot second line
 
+        # elif random.choice == y:
+        #     # choose battery x coordinate
+        #     # plot first line
+        #     # plot second line
+        #     plt.plot(x, y)
+        
+        
+        # draw points and plot
+        plt.scatter(x, y, color ='red')
+        plt.scatter(x1, y1, color='blue')
+        plt.grid(True)
+        plt.show()
 
