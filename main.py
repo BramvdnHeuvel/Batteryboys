@@ -5,6 +5,6 @@ from algorithms.first_fit_batteries import first_fit_batteries
 import random
 
 grid = Map(3)
-grid.execute(evolve_victor)
+grid.execute(first_fit_houses)
 grid.start()
 grid.visualize()

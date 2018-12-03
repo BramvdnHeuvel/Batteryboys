@@ -59,23 +59,14 @@ class Map:
         house_batteries = list(house.connected for house in self.houses)
         con_batteries_x = list(battery.x for battery in house_batteries)
         con_batteries_y = list(battery.y for battery in house_batteries)
-        
+        con_batteries_id = list(battery.id for battery in house_batteries)
         # draw lines between connected houses and batteries
         plt.figure(figsize=(10,10))
-        for i in range(len(house_batteries)):
-            if con_batteries_x[i] == 43.0:
-                color = "green"
-            if con_batteries_x[i] == 42.0:
-                color = "black"
-            if con_batteries_x[i] == 38.0:
-                color = "purple"
-            if con_batteries_x[i] == 3.0:
-                color = "pink"
-            if con_batteries_x[i] == 49.0:
-                color = "orange"
+        colors = ['g', 'y', 'm', 'k', 'c']
 
-            plt.plot([houses_x[i], con_batteries_x[i]], [houses_y[i], houses_y[i]], color = color)
-            plt.plot([con_batteries_x[i], con_batteries_x[i]], [houses_y[i], con_batteries_y[i]], color = color)
+        for i in range(len(house_batteries)):
+            plt.plot([houses_x[i], con_batteries_x[i]], [houses_y[i], houses_y[i]], color = colors[con_batteries_id[i]])
+            plt.plot([con_batteries_x[i], con_batteries_x[i]], [houses_y[i], con_batteries_y[i]], color = colors[con_batteries_id[i]])
 
         # draw points and plot      
         plt.scatter(houses_x, houses_y, color ='red')

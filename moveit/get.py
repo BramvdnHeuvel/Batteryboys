@@ -6,6 +6,7 @@ import pandas as pd
 def __load_batteries(filename):
     """Get a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
     battery_list=[]
+    id = 0
     with open(filename,'r') as file:
         next(file)
         for line in file:
@@ -13,7 +14,8 @@ def __load_batteries(filename):
             x = float(result[0])
             y = float(result[1])
             capacity = result[2]
-            battery_list.append(Battery(x, y, capacity))
+            battery_list.append(Battery(id, x, y, capacity))
+            id+=1
     return battery_list
         
 def __load_houses(filename):
