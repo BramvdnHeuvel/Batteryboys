@@ -15,7 +15,7 @@ class Battery(object):
         return False
     
     def __repr__(self):
-        return '<Battery id = {} x={} y={} cap={}>'.format(self.id,self.x,self.y,self.capacity)
+        return '<Battery x={} y={} cap={} id = {}>'.format(self.x,self.y,self.capacity,self.id)
 
     def check_storage_space(self):
         """

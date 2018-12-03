@@ -22,11 +22,14 @@ def __load_houses(filename):
     """Get a list of houses from a given neighbourhood. The neighbourhood is an integer.""" 
     data = pd.read_csv(filename)
     huizen = []
+    i = 0
     for index, row in data.iterrows():
+        id = i
         x = row['x']
         y = row['y']
         output = row['max. output']
-        huizen.append(House(x, y, output))
+        huizen.append(House(id, x, y, output))
+        i += 1
     return huizen
 
 def batteries(neighbourhood):

@@ -1,4 +1,5 @@
 # from first_fit_batteries import first_fit_batteries
+import random
 import sys
 sys.path.append("..")
 from classes.house import House
@@ -20,11 +21,15 @@ from classes.house import House
 #     swap back
 def hillclimber(self, houses, batteries):
     house_batteries = list(house.connected for house in self.houses)
-    con_batteries_x = list(battery.x for battery in house_batteries)
-    con_batteries_y = list(battery.y for battery in house_batteries)
-    print(con_batteries_x)
+    house1 = house_batteries[random.randrange(149)]
+    house2 = house_batteries[random.randrange(149)]
+    if house1.id == house2.id:
+        return False
+    if 
 
-    return con_batteries_y
+    # print(con_batteries_x)
+
+    # return con_batteries_y
 
 
 def distance(house, battery):
