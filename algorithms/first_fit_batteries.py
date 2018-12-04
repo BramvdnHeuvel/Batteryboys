@@ -8,9 +8,8 @@ def first_fit_batteries(self,houses,batteries):
 
     for battery in batteries:
         for house in houses:
-            if not house in connected and battery.capacity > house.output:
-                house.connect(battery)
-                battery.capacity -= house.output
+            if not house in connected and battery.power > house.output:
+                self.connect(house, battery)
                 connected.append(house)
-                # print(connected)
-    print(len(connected)) 
+    print(len(connected))
+    print(self.moneyspent)

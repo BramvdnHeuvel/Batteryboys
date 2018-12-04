@@ -1,3 +1,4 @@
+import config
 import random
 
 def find_raced_fit(self, houses, batteries, population=32):
@@ -164,7 +165,7 @@ class Generation:
             if house.output <= battery.power:
                 house.connect(battery)
                 amount_score += 1
-                cost_score += -1 * distance(house, battery)
+                cost_score += -1 * distance(house, battery) * config.cost_per_grid_section
 
         power_score = -1 * sum([battery.power for battery in self.batteries])
         # power_score += sum([battery.capacity for battery in self.batteries])

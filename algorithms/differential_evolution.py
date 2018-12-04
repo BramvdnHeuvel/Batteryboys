@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
-
 import random
 import time
+
+import config
 
 def evolve_victor(self, houses, batteries, population=4):
     generation = __create_generation(houses, batteries, population, mutation=0.03)
@@ -13,7 +14,7 @@ def evolve_victor(self, houses, batteries, population=4):
         score = generation.find_best_one()[1]
 
         if score[0] < 150:
-            best_cost.append(5300)
+            best_cost.append(5300 * config.cost_per_grid_section)
         else:
             best_cost.append(-1*score[2])
 
@@ -147,7 +148,7 @@ class DEGeneration:
             if house.output <= battery.power:
                 house.connect(battery)
                 amount_score += 1
-                cost_score += -1 * distance(house, battery)
+                cost_score += -1 * distance(house, battery) * config.cost_per_grid_section
 
         power_score = -1 * sum([battery.power for battery in self.batteries])
         # power_score += sum([battery.capacity for battery in self.batteries])
