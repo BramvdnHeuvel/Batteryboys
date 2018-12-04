@@ -1,7 +1,7 @@
 from classes.map import Map
-from algorithms.differential_evolution import evolve_victor
+from algorithms.genetic_race import find_raced_fit
 import random
 
 grid = Map(1)
-grid.execute(evolve_victor)
+grid.execute(find_raced_fit)
 grid.start()
