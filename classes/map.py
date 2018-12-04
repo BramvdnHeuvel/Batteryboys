@@ -28,7 +28,7 @@ class Map:
             raise TypeError("Cannot connect to a non-Battery object")
 
         house.connect(battery)
-        self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section + 5 * 5000
+        self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section 
 
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         house = self.__find_object(x1,y1)
@@ -57,6 +57,7 @@ class Map:
         
         # get x and y coords of connected battery for each house
         house_batteries = list(house.connected for house in self.houses)
+        print(house_batteries)
         con_batteries_x = list(battery.x for battery in house_batteries)
         con_batteries_y = list(battery.y for battery in house_batteries)
         con_batteries_id = list(battery.id for battery in house_batteries)

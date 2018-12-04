@@ -8,7 +8,7 @@ def evolve_victor(self, houses, batteries, population=4):
     generation = __create_generation(houses, batteries, population, mutation=0.03)
     best_cost = []
 
-    for i in range(10000):
+    for i in range(100000):
         next(generation)
 
         score = generation.find_best_one()[1]
