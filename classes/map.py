@@ -89,10 +89,13 @@ class Map:
         plt.show()
 
     def swap(self, house1, house2):
+        # geven alleen house1 en battery2 mee, niet house2
         battery1 = house1.connected
         battery2 = house2.connected
         self.disconnect(house1, battery1)
         self.disconnect(house2, battery2)
         self.connect(house1, battery2)
         self.connect(house2, battery1)
+
+        print(self.moneyspent)
 

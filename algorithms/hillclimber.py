@@ -3,6 +3,7 @@ import random
 import sys
 sys.path.append("..")
 from classes.house import House
+from classes.map import Map
 
 
 # This will be the hill climber for our problem
@@ -20,41 +21,44 @@ from classes.house import House
 # else:
 #     swap back
 
-def hillclimber(self, houses, batteries):
-    house1 = houses[random.randrange(149)]
-    house2 = houses[random.randrange(149)]
+def hillclimber(map, houses, batteries):
+    # houses = map.houses
 
-    house_batteries = list(house.connected for house in self.houses)
-    # print(house_batteries)
+    for i in range(20):
+        house1 = houses[random.randrange(149)]
+        house2 = houses[random.randrange(149)]
 
-    battery1 = house_batteries[house1.id]
-    battery2 = house_batteries[house2.id]
-    print(house1)
-    print(house2)
-    print(battery1)
-    print(battery2)
+        # print(house_batteries)
 
-    if house1.id == house2.id:
-        print("same house")
-        return False
-    if battery1.id == battery2.id:
-        print("same battery")
-        return False
-    if battery1.power + house1.output - house2.output < 0:
-        print("not enough capacity 1")
-        return False
-    if battery2.power + house2.output - house1.output < 0:
-        print("not enough capacity 2")
-        return False
-    if distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
-        print(distance(house1, battery1))
-        house1.connect(house1, battery2)
-        connect(house2, battery1)
-        print("swapped")
-    else:
-        print("nothing happened")
+        battery1 = house1.connected
+        battery2 = house2.connected
+        print(house1)
+        print(house2)
+        print(battery1)
+        print(battery2)
 
-    # print(house_batteries)
+        if house1.id == house2.id:
+            print("same house")
+            
+        elif battery1.id == battery2.id:
+            print("same battery")
+            
+        elif battery1.power + house1.output - house2.output < 0:
+            print("not enough capacity 1")
+            
+        elif battery2.power + house2.output - house1.output < 0:
+            print("not enough capacity 2")
+            
+        elif distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
+            # print(distance(house1, battery1))
+            # kijk hier!
+            map.swap(house1, battery2)
+            map.swap(house2, battery1)
+            print("swapped")
+        else:
+            print("nothing happened")
+        # print(map.moneyspend)
+        # print(house_batteries)
 
 
     
