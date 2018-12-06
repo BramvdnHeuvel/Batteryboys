@@ -7,7 +7,7 @@ from algorithms.hillclimber import hillclimber
 import random
 
 grid = Map(3)
-for i in range(100):
+# for i in range(10000):
     grid.execute(first_fit_batteries)
 # grid.execute(hillclimber)
 grid.start()

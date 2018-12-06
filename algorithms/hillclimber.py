@@ -48,8 +48,8 @@ def hillclimber(self, houses, batteries):
         return False
     if distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
         print(distance(house1, battery1))
-        self.connect(house1, battery2)
-        self.connect(house2, battery1)
+        house1.connect(house1, battery2)
+        connect(house2, battery1)
         print("swapped")
     else:
         print("nothing happened")

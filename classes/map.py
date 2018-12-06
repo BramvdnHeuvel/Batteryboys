@@ -30,6 +30,18 @@ class Map:
         house.connect(battery)
         self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section 
 
+    def disconnect(self,house,battery,must_connect_to_battery=True):
+        if house is None:
+            raise TypeError("Could not find house that needed to be connected.")
+        if battery is None:
+            raise TypeError("Could not find house/battery that needed to be connected to.")
+        
+        if must_connect_to_battery and battery.__class__.__name__ != "Battery":
+            raise TypeError("Cannot connect to a non-Battery object")
+
+        battery.power += house.output
+        self.moneyspent -= manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section
+
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         house = self.__find_object(x1,y1)
         battery = self.__find_object(x2,y2) # Note: doesn't have to be battery, per say
@@ -75,4 +87,12 @@ class Map:
         plt.title("Smart Grid")
         plt.grid(True)
         plt.show()
+
+    def swap(self, house1, house2):
+        battery1 = house1.connected
+        battery2 = house2.connected
+        self.disconnect(house1, battery1)
+        self.disconnect(house2, battery2)
+        self.connect(house1, battery2)
+        self.connect(house2, battery1)
 
