@@ -6,8 +6,8 @@ from algorithms.genetic_race import find_raced_fit
 from algorithms.hillclimber import hillclimber
 import random
 
-grid = Map(3)
+grid = Map(1)
 grid.execute(first_fit_batteries)
-grid.execute(hillclimber)
+# grid.execute(hillclimber)
 grid.start()
 # grid.visualize()
