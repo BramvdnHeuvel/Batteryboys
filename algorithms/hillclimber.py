@@ -25,9 +25,10 @@ def hillclimber(self, houses, batteries):
     house2 = houses[random.randrange(149)]
 
     house_batteries = list(house.connected for house in self.houses)
+    # print(house_batteries)
 
-    battery1 = house_batteries[house1.id - 1]
-    battery2 = house_batteries[house2.id - 1]
+    battery1 = house_batteries[house1.id]
+    battery2 = house_batteries[house2.id]
     print(house1)
     print(house2)
     print(battery1)
@@ -46,12 +47,14 @@ def hillclimber(self, houses, batteries):
         print("not enough capacity 2")
         return False
     if distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
+        print(distance(house1, battery1))
         self.connect(house1, battery2)
         self.connect(house2, battery1)
-        print(self.connect)
         print("swapped")
     else:
         print("nothing happened")
+
+    # print(house_batteries)
 
 
     
@@ -59,16 +62,6 @@ def hillclimber(self, houses, batteries):
     # print(con_batteries_x)
 
     # return con_batteries_y
-def __create_first_individual(houses, batteries):
-    individual = []
-
-    for i in range(len(houses)):
-        connection = random.randint(0, len(batteries)-1)
-        individual.append(connection)
-    
-    print(individual)
-    
-    return individual
 
 
 def distance(house, battery):
