@@ -24,7 +24,7 @@ from classes.map import Map
 def hillclimber(map, houses, batteries):
     # houses = map.houses
 
-    for i in range(20):
+    for i in range(200):
         house1 = houses[random.randrange(149)]
         house2 = houses[random.randrange(149)]
 
@@ -52,21 +52,13 @@ def hillclimber(map, houses, batteries):
         elif distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
             # print(distance(house1, battery1))
             # kijk hier!
-            map.swap(house1, battery2)
-            map.swap(house2, battery1)
+            map.swap(house1, house2)
+            # map.swap(house2, battery1)
             print("swapped")
         else:
             print("nothing happened")
         # print(map.moneyspend)
         # print(house_batteries)
-
-
-    
-
-    # print(con_batteries_x)
-
-    # return con_batteries_y
-
 
 def distance(house, battery):
     return abs(house.x - battery.x) + abs(house.y - battery.y)
