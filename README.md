@@ -22,6 +22,6 @@ python main.py.
 
 ### Differential evolution
 Na een miljoen generaties waren de totale kosten voor map 1 63124.0. 
-![alt text](file:///C:/Users/Max/Desktop/Sexy_Figure_1.pdf)
+![What is this](Differential_evolution_results.png)
    
 ###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.
