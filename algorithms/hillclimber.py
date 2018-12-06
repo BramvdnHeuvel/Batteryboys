@@ -19,31 +19,39 @@ from classes.house import House
 #     keep changes
 # else:
 #     swap back
+
 def hillclimber(self, houses, batteries):
     house1 = houses[random.randrange(149)]
     house2 = houses[random.randrange(149)]
 
     house_batteries = list(house.connected for house in self.houses)
-    # con_batteries_x = list(battery.x for battery in house_batteries)
-    # con_batteries_y = list(battery.y for battery in house_batteries)
-    con_batteries_id = list(battery.id for battery in house_batteries)
-    battery1 = house_batteries[random.randrange(149)]
-    battery2 = house_batteries[random.randrange(149)]
+
+    battery1 = house_batteries[house1.id - 1]
+    battery2 = house_batteries[house2.id - 1]
     print(house1)
     print(house2)
+    print(battery1)
+    print(battery2)
+
     if house1.id == house2.id:
+        print("same house")
         return False
     if battery1.id == battery2.id:
+        print("same battery")
         return False
     if battery1.power + house1.output - house2.output < 0:
+        print("not enough capacity 1")
         return False
     if battery2.power + house2.output - house1.output < 0:
+        print("not enough capacity 2")
         return False
     if distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
         self.connect(house1, battery2)
         self.connect(house2, battery1)
+        print(self.connect)
+        print("swapped")
     else:
-        print("succeeded")
+        print("nothing happened")
 
 
     
@@ -51,6 +59,16 @@ def hillclimber(self, houses, batteries):
     # print(con_batteries_x)
 
     # return con_batteries_y
+def __create_first_individual(houses, batteries):
+    individual = []
+
+    for i in range(len(houses)):
+        connection = random.randint(0, len(batteries)-1)
+        individual.append(connection)
+    
+    print(individual)
+    
+    return individual
 
 
 def distance(house, battery):
