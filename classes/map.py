@@ -69,7 +69,10 @@ class Map:
         
         # get x and y coords of connected battery for each house
         house_batteries = list(house.connected for house in self.houses)
-        # print(house_batteries)
+        # if len(house_batteries) != len(self.houses):
+        #     print("Not all houses are connected!")
+        #     # break
+        # print(len())
         con_batteries_x = list(battery.x for battery in house_batteries)
         con_batteries_y = list(battery.y for battery in house_batteries)
         con_batteries_id = list(battery.id for battery in house_batteries)
