@@ -19,7 +19,7 @@ State space: De state space zou zijn dat elk huis in een hoek zou staan en gekop
 
 #### First fit batteries
 1000 keer gerund, zien dat de resultaten boven de 46000 blijven.
-![What is this](/results/first_fit/batteries_goede.png)
+![What is this](/results/First_fit_batteries_goede.png)
 
 ### First fit houses
 1000 keer gerund, zien dat ie niet echt onder de 46000 komt.
