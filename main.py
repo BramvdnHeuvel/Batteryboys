@@ -8,6 +8,6 @@ import random
 
 grid = Map(1)
 grid.execute(first_fit_batteries)
-# grid.execute(hillclimber)
+grid.execute(hillclimber)
 grid.start()
 # grid.visualize()
