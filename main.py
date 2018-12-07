@@ -8,39 +8,29 @@ from algorithms.genetic_race import find_raced_fit
 from algorithms.hillclimber import hillclimber
 import random
 
-<<<<<<< HEAD
-moneys = []
-for i in range(1000):
-
-    grid = Map(1)
-    grid.execute(first_fit_houses)
-    grid.start()
-    moneys.append(grid.moneyspent)
-# grid.execute(hillclimber)
-
-plt.plot(range(len(moneys)),moneys,'r-')
-plt.show()
-# grid.visualize()
-=======
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []
 
-while len(first_generation) < 4:
-    try:
-        grid = Map(1)
-        grid.execute(first_fit_batteries)
-        grid.execute(hillclimber)
-        grid.start()
-        print(f"Before: {grid.moneyspent}\tAfter: {grid.refresh_cost()}")
+# while len(first_generation) < 4:
+#     try:
+#         grid = Map(1)
+#         grid.execute(first_fit_batteries)
+#         grid.execute(hillclimber)
+#         grid.start()
+#         print(f"Before: {grid.moneyspent}\tAfter: {grid.refresh_cost()}")
 
-        if [house.id for house in grid.houses if house.connected == None] == []:
-            print(f"Found a child that costs {grid.moneyspent}!")
-            first_generation.append(grid.get_list())
-    except AttributeError:
-        print("Failed attempt.")
+#         if [house.id for house in grid.houses if house.connected == None] == []:
+#             print(f"Found a child that costs {grid.moneyspent}!")
+#             first_generation.append(grid.get_list())
+#     except AttributeError:
+#         print("Failed attempt.")
 
 grid = Map(1)
+grid.execute(first_fit_batteries)
+grid.execute(hillclimber)
+grid.start()
+
 generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutation=0.03)
 print(generation.find_best_one())
 scores = []
@@ -56,4 +46,3 @@ import matplotlib.pyplot as plt
 print(generation.find_best_one())
 plt.plot(scores)
 plt.show()
->>>>>>> 9b1a3b5805da0bb73a9eda96bc77ad805ec78d0f

@@ -26,6 +26,8 @@ State space: De state space zou zijn dat elk huis in een hoek zou staan en gekop
 ![What is this](/results/first_fit_houses_goede.png)
 
 #### Hill climber
+hill climber tried 20.000 different swaps.
+![What is this](/results/Hillclimber_try.png)
 
 #### Genetic race
 
@@ -38,6 +40,7 @@ We see that the firsT_fit_houses gets slightly better results than the first_fit
 They stop around 46.000.
 The differential evolution however, gets a result of around 38.000.
 This means that the differential evolution gets a better score, and is therefore better for us to use.
+The hillclimber at this moment gives around 32.000, which is better than the differential and much better than both the first_fits.  
 
    
 ### Oplossingen voor pijnpunten in case
