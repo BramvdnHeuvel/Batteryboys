@@ -1,12 +1,12 @@
 import config
 from moveit.scheme import manhattan_distance
-import moveit.get
+import moveit.get as get
 import matplotlib.pyplot as plt
 
 class Map:
     def __init__(self,neighbourhood):
-        self.batteries  = moveit.get.batteries(neighbourhood)
-        self.houses     = moveit.get.houses(neighbourhood)
+        self.batteries  = get.batteries(neighbourhood)
+        self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
         
         self.executions = []
@@ -42,6 +42,9 @@ class Map:
         battery.power += house.output
         self.moneyspent -= manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section
 
+    def get_list(self):
+        return [house.connected.id for house in self.houses]
+
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         house = self.__find_object(x1,y1)
         battery = self.__find_object(x2,y2) # Note: doesn't have to be battery, per say
@@ -59,6 +62,19 @@ class Map:
                 return house
         
         return None
+
+    def refresh_cost(self):
+        self.moneyspent = 0
+
+        for house_index in zip(self.houses, self.get_list()):
+            house = house_index[0]
+            bat_id = house_index[1]
+
+            battery = self.batteries[bat_id]
+
+            self.connect(house, battery)
+
+        return self.moneyspent
 
     def visualize(self):
         """Plots houses, batteries, and connections."""
@@ -99,6 +115,4 @@ class Map:
         self.disconnect(house2, battery2)
         self.connect(house1, battery2)
         self.connect(house2, battery1)
-
-        print(self.moneyspent)
 
