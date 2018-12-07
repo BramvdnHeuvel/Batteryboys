@@ -1,5 +1,5 @@
 # Batteryboys
-Dit is de repository voor het maken van een schema wat huizen zo efficiënt mogelijk verdeeld over een aantal batterijen.
+Dit is de repository voor het maken van een schema wat huizen zo efficiënt mogelijk koppelt aan een aantal batterijen.
 
 ### Vereisten
 In requirements.txt staan de benodigde packages. Alle code in de repository is geschreven in Python 3.6.
@@ -9,6 +9,19 @@ In de resources map staan alle bestanden die worden uitgelezen. De classes map b
   
 ### Test (Testing)
 Om de code te draaien met de standaardconfiguratie gebruik de instructie:
-python main.py (*nog niet werkende op moment van schrijven).
+python main.py.
+
+### Resultaten
+#### First fit batteries
+
+### First fit houses
+
+### Hill climber
+
+### Genetic race
+
+### Differential evolution
+Na een miljoen generaties waren de totale kosten voor map 1 63124.0. 
+![What is this](/results/Differential_evolution_results.png)
    
 ###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.

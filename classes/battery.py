@@ -2,7 +2,8 @@ class Battery(object):
     """
     Representation of a Battery containing the battery id, its x and y coordinate, and its current capacity
     """
-    def __init__(self, x, y, capacity):
+    def __init__(self, id, x, y, capacity):
+        self.id = id
         self.x = x
         self.y = y
         self.capacity = float(capacity)
@@ -14,7 +15,7 @@ class Battery(object):
         return False
     
     def __repr__(self):
-        return '<Battery x={} y={} cap={}>'.format(self.x,self.y,self.capacity)
+        return '<Battery x={} y={} cap={} id = {}>'.format(self.x,self.y,self.capacity,self.id)
 
     def check_storage_space(self):
         """

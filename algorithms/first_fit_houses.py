@@ -12,3 +12,5 @@ def first_fit_houses(self, houses, batteries):
                 connected.append(house)
     print(len(connected))
     print(self.moneyspent)
+    for battery in self.batteries:
+        battery.reset()
