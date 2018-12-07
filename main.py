@@ -30,5 +30,5 @@ grid.visualize()
 #             if [house.id for house in grid.houses if house.connected == None] == []:
 #                 print(f"Found a child that costs {grid.moneyspent}!")
 #                 first_generation.append(grid.get_list())
-#         except AttributeError:
+ #         except AttributeError:
 #             print("Failed attempt.")
