@@ -44,5 +44,6 @@ The hillclimber at this moment gives around 32.000, which is better than the dif
 
    
 ### Oplossingen voor pijnpunten in case
+Een issue in het differentiaalevolutiealgoritme was dat de scorefunctie in een willekeurige volgorde de huizen zou verdelen over de batterijen. Dit zou niet uitmaken voor verdelingen waarin alle huizen passen, maar maakt wel degelijk uit als niet alle huizen passen. Echter bleek dit vooral een negatief effect te hebben, omdat bijna correcte antwoorden als foutief genoteerd konden worden. Om deze reden is de score niet niet-deterministisch.
 
 ###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.
