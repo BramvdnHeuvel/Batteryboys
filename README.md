@@ -31,6 +31,7 @@ upperbound: 71253
 Map 3:
 lowerbound: 17757
 upperbound: 76491
+These are calculated with an algorithm, called bounds. Here we check the fursthest away and the closest battery to a house.
 
 #### First fit batteries
 1000 keer gerund, zien dat de resultaten boven de 46000 blijven.
@@ -63,5 +64,7 @@ Een issue in het differentiaalevolutiealgoritme was dat de scorefunctie in een w
 We also had some troubles compiling the hill-climber, but that was more to blame on the programming skills. 
 The tech-assistents and the leader of the group, Bram, gave us some advise and now we think it works!
 Because the hill-climber needs a solution to begin with, we first need to run a first_fit algorithm to get a start.
+Another pain-point could be that with ah hill-climber, we might get stuck in a local optima.
+This is why we first run the hill-climber, and then use this solution in a differential algarithm to get an optimal result.
 
 ###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.
