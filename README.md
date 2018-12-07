@@ -34,7 +34,7 @@ Na een miljoen generaties waren de totale kosten voor map 1 63124.0.
 ![What is this](/results/Differential_evolution_results.png)
 
 #### Smart-Grid
-![What is this](/results/example grid.png)
+![What is this](/results/example_grid.png)
    
 ### Oplossingen voor pijnpunten in case
 
