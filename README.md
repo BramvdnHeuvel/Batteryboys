@@ -12,19 +12,20 @@ Om de code te draaien met de standaardconfiguratie gebruik de instructie:
 python main.py.
 
 ### Resultaten
-Lower bound:
-Upper bound:
-State space:
+Lower bound: De lower bound is berekend door elk huis aan de dichstbijzijnde batterij te koppelen.
+Upper bound: De upper bound is berekend door elk huis aan de verste batterij te koppelen.
+State space: De state space zou zijn dat elk huis in een hoek zou staan en gekoppeld wordt aan een batterij aan de andere kant van de kaart. Xmax = 50 en Ymax 50, Xmin = 0 en Ymin = 0. Om van een hoek naar de verste kant van de kaart te komen zullen dan 50*50 lijnen moeten worden getrokken wat 2500 lijnen geeft. Dit zou dan voor 150 huizen moeten gebeuren (met de aanname dat huizen onder elkaar mogen staan). Dit geeft een state space van 375000 lijnen om alle huizen aan een batterij te koppelen.
+
 
 #### First fit batteries
 
-### First fit houses
+#### First fit houses
 
-### Hill climber
+#### Hill climber
 
-### Genetic race
+#### Genetic race
 
-### Differential evolution
+#### Differential evolution
 Na een miljoen generaties waren de totale kosten voor map 1 63124.0. 
 ![What is this](/results/Differential_evolution_results.png)
    
