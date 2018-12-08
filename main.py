@@ -29,7 +29,7 @@ generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutatio
 print(generation.find_best_one())
 scores = []
 
-for i in range(100000):
+for i in range(1000000):
     generation = next(generation)
     if (i + 1) % 100 == 0:
         print(f"Reached generation {i+1}!")
