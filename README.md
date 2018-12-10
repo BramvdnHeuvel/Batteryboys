@@ -11,11 +11,27 @@ In de resources map staan alle bestanden die worden uitgelezen. De classes map b
 Om de code te draaien met de standaardconfiguratie gebruik de instructie:
 python main.py.
 
-### Resultaten
-Lower bound: De lower bound is berekend door elk huis aan de dichstbijzijnde batterij te koppelen.
-Upper bound: De upper bound is berekend door elk huis aan de verste batterij te koppelen.
-State space: De state space zou zijn dat elk huis in een hoek zou staan en gekoppeld wordt aan een batterij aan de andere kant van de kaart. Xmax = 50 en Ymax 50, Xmin = 0 en Ymin = 0. Om van een hoek naar de verste kant van de kaart te komen zullen dan 50*50 lijnen moeten worden getrokken wat 2500 lijnen geeft. Dit zou dan voor 150 huizen moeten gebeuren (met de aanname dat huizen onder elkaar mogen staan). Dit geeft een state space van 375000 lijnen om alle huizen aan een batterij te koppelen.
+### State space
+State space: The statespace is calculated (per neighbourhood) with the batteries and the houses. 
+We have 5 batteries and 150 houses per neighbourhood, so the state space for one neighbourhood is:
+5^150, which is 7.006492e+104. Each house will be connected to a battery, so per house there are 5 possibilities. 
+This results in our calculation. 
+The state space will differ once we decide to add/remove batteries, because then the amount of batteries is different.
+Then, we will use N^150, where N is the number of batteries.
 
+#### Lower- and upperbounds:
+These are the Lower- and upperbounds costs for our case, per neighbourhood.
+The costs are for the grids only, so without the battery prices
+Map 1:
+lowerbound: 28188
+upperbound: 78030
+Map 2:
+lowerbound: 20268
+upperbound: 71253
+Map 3:
+lowerbound: 17757
+upperbound: 76491
+These are calculated with an algorithm, called bounds. Here we check the fursthest away and the closest battery to a house.
 
 #### First fit batteries
 1000 keer gerund, zien dat de resultaten boven de 46000 blijven.
@@ -45,5 +61,5 @@ The hillclimber at this moment gives around 32.000, which is better than the dif
    
 ### Oplossingen voor pijnpunten in case
 Een issue in het differentiaalevolutiealgoritme was dat de scorefunctie in een willekeurige volgorde de huizen zou verdelen over de batterijen. Dit zou niet uitmaken voor verdelingen waarin alle huizen passen, maar maakt wel degelijk uit als niet alle huizen passen. Echter bleek dit vooral een negatief effect te hebben, omdat bijna correcte antwoorden als foutief genoteerd konden worden. Om deze reden is de score niet niet-deterministisch.
-
+Voor de hill climber was het essentieel om een eerste oplossing te krijgen om die vervolgens te optimaliseren. Een ander pijnpunt wat betreft de hill climber is het blijven steken van resultaten in lokale optima. Dit hebben we opgelost door de resultaatconfiguratie van huizen en batterij-verbindingen in een differentiaal algoritme te zetten.
 ###### Auteurs (Authors): Bram van den Heuvel, Wiebe Jelsma en Max Baneke.
