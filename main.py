@@ -18,16 +18,17 @@ while len(first_generation) < 4:
         grid = Map(1)
         grid.execute(first_fit_batteries)
         grid.execute(hillclimber)
+        print("a")
         grid.start()
         print(f"Before: {grid.moneyspent}\tAfter: {grid.refresh_cost()}")
 
-        if [house.id for house in grid.houses if house.connected == None] == []:
+        if [house.id for house in grid.houses if house.connected is None] == []:
             print(f"Found a child that costs {grid.moneyspent}!")
             first_generation.append(grid.get_list())
     except AttributeError:
         print("Failed attempt.")
 
-# grid = Map(1)
+grid = Map(1)
 generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutation=0.03)
 print(generation.find_best_one())
 scores = []

@@ -14,6 +14,5 @@ def first_fit_batteries(self,houses,batteries):
                 self.connect(house, battery)
                 connected.append(house)
     print(len(connected))
-    print(battery)
     moneys.append(self.moneyspent)
     
