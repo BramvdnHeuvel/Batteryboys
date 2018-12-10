@@ -7,6 +7,7 @@ from algorithms.first_fit_batteries import first_fit_batteries
 from algorithms.genetic_race import find_raced_fit
 from algorithms.hillclimber import hillclimber
 from algorithms.bounds import first_distance
+from algorithms.bounds import highest_distance
 import random
 
 from algorithms.differential_evolution import DEGeneration
@@ -14,7 +15,7 @@ from algorithms.differential_evolution import DEGeneration
 first_generation = []
 
 grid = Map(1)
-grid.execute(first_distance)
+grid.execute(first_fit_batteries)
 grid.start()
 grid.visualize()
 
