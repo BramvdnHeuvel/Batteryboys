@@ -30,7 +30,7 @@ def evolve_victor(self, houses, batteries, population=4):
     
 # -------------------------------------------------------------------------------------------
 
-def __create_generation(houses, batteries, population=4, mutation=0.2):
+def __create_generation(houses, batteries, population=4, mutation=0.03):
     generation_individuals = []
 
     for i in range(population):
