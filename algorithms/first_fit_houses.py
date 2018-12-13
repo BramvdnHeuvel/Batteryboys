@@ -2,8 +2,7 @@ import random
 
 def first_fit_houses(self, houses, batteries):
     connected = []
-    random.shuffle(batteries)
-    random.shuffle(houses)
+
 
     for house in houses:
         for battery in batteries:
