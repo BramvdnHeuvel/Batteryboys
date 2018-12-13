@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 def first_fit_batteries(self,houses,batteries):
     moneys = []
     connected = []
-    random.shuffle(batteries)
-    random.shuffle(houses)
+    # random.shuffle(batteries)
+    # random.shuffle(houses)
 
     for battery in batteries:
         for house in houses:
