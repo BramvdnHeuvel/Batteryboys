@@ -7,12 +7,15 @@ sys.path.append("..")
 from classes.house import House
 from classes.map import Map
 
-def hillclimber(map, houses, batteries):
+def hillclimber(map):
+    """
+    Performs a hillclimber with two random chosen houses.
+    """
     new_costs = []
     for i in range(30000):
         
-        house1 = houses[random.randrange(149)]
-        house2 = houses[random.randrange(149)]
+        house1 = map.houses[random.randrange(149)]
+        house2 = map.houses[random.randrange(149)]
 
         battery1 = house1.connected
         battery2 = house2.connected
@@ -31,30 +34,13 @@ def hillclimber(map, houses, batteries):
                 map.get_list()
 
         elif battery1 is None:
-            if batteries[0].power > house1.output:
-                house1.connect(batteries[0])
-            elif batteries[1].power > house1.output:
-                house1.connect(batteries[1])
-            elif batteries[2].power > house1.output:
-                house1.connect(batteries[2])
-            elif batteries[3].power > house1.output:
-                house1.connect(batteries[3])
-            elif batteries[4].power > house1.output:
-                house1.connect(batteries[4])
+            check(house1, map.batteries)
         
         else:
-            if batteries[0].power > house2.output:
-                house1.connect(batteries[0])
-            elif batteries[1].power > house2.output:
-                house1.connect(batteries[1])
-            elif batteries[2].power > house2.output:
-                house1.connect(batteries[2])
-            elif batteries[3].power > house2.output:
-                house1.connect(batteries[3])
-            elif batteries[4].power > house2.output:
-                house1.connect(batteries[4])
+            check(house2, map.batteries)
     
-    # print(new_costs[-1])
-    # plt.plot(range(len(new_costs)),new_costs,'r-')
-    # plt.show()
+def check(house, batteries):
+    for battery in batteries:
+        if battery.power > house.output:
+            house.connect(battery)
 

@@ -12,7 +12,7 @@ class Map:
 
     def start(self):
         for function in self.executions:
-            function(self,self.houses,self.batteries)
+            function(self)
 
     def execute(self,func):
         self.executions.append(func)
