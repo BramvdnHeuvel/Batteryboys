@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
 import config
 
-def first_distance(self,houses,batteries):  
+def first_distance(self,houses,batteries):
+    """
+    Connects houses to batteries that have the lowest distance
+    """  
     total_distance = 0    
     for house in houses:
         lowest_distance = 9000
@@ -26,6 +29,9 @@ def first_distance(self,houses,batteries):
     print(total_distance * config.cost_per_grid_section)
 
 def highest_distance(self,houses,batteries):  
+    """
+    Connects houses to batteries that have the farthest distance
+    """  
     total_distance = 0    
     for house in houses:
         highest_distance = 0
@@ -52,5 +58,8 @@ def highest_distance(self,houses,batteries):
 
 
 def distance(house, battery):
+    """
+    Calculate distance between individual houses and batteries
+    """  
     return abs(house.x - battery.x) + abs(house.y - battery.y)
     
