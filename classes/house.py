@@ -1,7 +1,7 @@
 class House:
     """
     The house class represents a house in the smart grid. Each house has an id,
-    a x and y coordinate which determine the location of the house in the grid,
+    an x and y coordinate which determine the location of the house in the grid,
     and an output.
     """
 
