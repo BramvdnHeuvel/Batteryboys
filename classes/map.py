@@ -107,5 +107,3 @@ class Map:
         self.connect(house1, battery2)
         self.connect(house2, battery1)
 
-        print(self.moneyspent)
-

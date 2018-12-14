@@ -13,6 +13,5 @@ def first_fit_batteries(self,houses,batteries):
             if not house in connected and battery.power > house.output:
                 self.connect(house, battery)
                 connected.append(house)
-    print(len(connected))
     moneys.append(self.moneyspent)
     

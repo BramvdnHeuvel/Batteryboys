@@ -58,7 +58,6 @@ def hillclimber(map, houses, batteries):
         elif distance(house1, battery2) + distance(house2, battery1) < distance(house1, battery1) + distance(house2, battery2):
             map.swap(house1, house2)
         new_costs.append(map.moneyspent)
-    print(new_costs[-1])
     plt.plot(range(len(new_costs)),new_costs,'r-')
     # plt.show()
     # map.visualize()
