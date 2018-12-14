@@ -18,7 +18,7 @@ class Map:
 
     def start(self):
         for function in self.executions:
-            function(self,self.houses,self.batteries)
+            function(self)
 
     def execute(self,func):
         self.executions.append(func)
@@ -123,7 +123,6 @@ class Map:
         self.connect(house1, battery2)
         self.connect(house2, battery1)
 
-        print(self.moneyspent)
 
 def distance(house, battery):
     """

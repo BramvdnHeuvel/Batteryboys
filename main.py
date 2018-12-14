@@ -17,7 +17,6 @@ while len(first_generation) < 4:
     try:
         grid = Map(1)
         grid.execute(first_fit_batteries)
-        grid.execute(first_distance)
         grid.execute(hillclimber)
         grid.start()
         grid.visualize()
