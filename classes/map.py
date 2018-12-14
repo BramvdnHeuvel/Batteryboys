@@ -49,6 +49,9 @@ class Map:
         self.moneyspent -= distance(house, battery) * config.cost_per_grid_section
 
     def get_list(self):
+        """
+        Return house id of connected house.
+        """    
         return [house.connected.id for house in self.houses]
 
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):

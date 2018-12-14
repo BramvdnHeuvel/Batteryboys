@@ -7,7 +7,6 @@ from algorithms.hillclimber import hillclimber
 from algorithms.bounds import first_distance
 from algorithms.bounds import highest_distance
 import random
-
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []
