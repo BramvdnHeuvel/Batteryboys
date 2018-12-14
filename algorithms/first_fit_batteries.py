@@ -10,8 +10,6 @@ def first_fit_batteries(map):
     """
     moneys = []
     connected = []
-    # random.shuffle(batteries)
-    # random.shuffle(houses)
 
     for battery in map.batteries:
         for house in map.houses:

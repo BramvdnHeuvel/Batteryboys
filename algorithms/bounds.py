@@ -9,7 +9,6 @@ def first_distance(map):
     total_distance = 0    
     for house in map.houses:
         lowest_distance = 9000
-        lowest_battery = 8
         for battery in map.batteries:
 
             if distance(house, battery) < lowest_distance:
