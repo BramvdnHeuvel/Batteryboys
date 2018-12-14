@@ -31,6 +31,3 @@ def highest_distance(map):
         
         total_distance += highest_distance
     print(total_distance * config.cost_per_grid_section)
-
-
-

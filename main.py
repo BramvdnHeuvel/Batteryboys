@@ -1,5 +1,4 @@
 from classes.map import Map
-
 from algorithms.differential_evolution import evolve_victor
 from algorithms.first_fit_houses import first_fit_houses
 from algorithms.first_fit_batteries import first_fit_batteries
@@ -8,7 +7,6 @@ from algorithms.hillclimber import hillclimber
 from algorithms.bounds import first_distance
 from algorithms.bounds import highest_distance
 import random
-
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []

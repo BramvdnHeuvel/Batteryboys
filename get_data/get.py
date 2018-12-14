@@ -38,12 +38,12 @@ def __load_houses(filename):
 
 def batteries(neighbourhood):
     """
-    Make sure we can specify which neighbourhood we want to use.
+    Specify which neighbourhood to use.
     """
     return __load_batteries('resources/wijk{}_batterijen.txt'.format(neighbourhood))
 
 def houses(neighbourhood):
     """
-    Make sure we can specify which neighbourhood we want to use.
+    Specify which neighbourhood to use.
     """
     return __load_houses('resources/wijk{}_huizen.csv'.format(neighbourhood))
