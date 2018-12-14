@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import config
+from classes.map import distance
 
 def first_distance(self,houses,batteries):
     """
@@ -57,9 +58,3 @@ def highest_distance(self,houses,batteries):
 
 
 
-def distance(house, battery):
-    """
-    Calculate distance between individual houses and batteries
-    """  
-    return abs(house.x - battery.x) + abs(house.y - battery.y)
-    
