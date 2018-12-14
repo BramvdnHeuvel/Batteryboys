@@ -1,5 +1,9 @@
 class House:
-    # open file, go through houses
+    """
+    The house class represents a house in the smart grid. Each house has an id,
+    a x and y coordinate which determine the location of the house in the grid,
+     and an output.
+    """
 
     def __init__(self, id, x, y, output):
         self.id = id

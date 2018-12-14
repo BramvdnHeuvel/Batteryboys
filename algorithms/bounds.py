@@ -55,6 +55,3 @@ def highest_distance(self,houses,batteries):
         self.connect(house, batteries[highest_battery])
         total_distance += highest_distance
     print(total_distance * config.cost_per_grid_section)
-
-
-
