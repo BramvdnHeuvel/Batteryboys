@@ -1,6 +1,6 @@
 import random
 import matplotlib.pyplot as plt
-from algorithms.differential_evolution import distance
+from classes.map import distance
 
 import sys
 sys.path.append("..")
