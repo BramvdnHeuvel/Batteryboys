@@ -1,5 +1,6 @@
 import random
 import matplotlib.pyplot as plt
+from algorithms.differential_evolution import distance
 
 import sys
 sys.path.append("..")
@@ -56,7 +57,4 @@ def hillclimber(map, houses, batteries):
     # print(new_costs[-1])
     # plt.plot(range(len(new_costs)),new_costs,'r-')
     # plt.show()
-    
 
-def distance(house, battery):
-    return abs(house.x - battery.x) + abs(house.y - battery.y)

@@ -1,6 +1,5 @@
 import config
-from moveit.scheme import manhattan_distance
-import moveit.get as get
+import get_data.get as get
 import matplotlib.pyplot as plt
 
 class Map:
@@ -17,6 +16,8 @@ class Map:
 
     def execute(self,func):
         self.executions.append(func)
+    
+    
 
     def connect(self,house,battery,must_connect_to_battery=True):
         if house is None:
@@ -109,4 +110,7 @@ class Map:
         self.connect(house2, battery1)
 
         print(self.moneyspent)
+
+def manhattan_distance(x_house,y_house,x_battery,y_battery):
+    return abs(x_house - x_battery) + abs(y_house - y_battery)
 
