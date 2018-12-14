@@ -18,11 +18,17 @@ class House:
         return False
 
     def connect(self, battery):
+        """
+        Connect house to battery, update power, and return battery 
+        """
         self.connected = battery
         battery.store(self.output)
         return self.connected
     
     def __repr__(self):
+        """
+        Specify which house to use.
+        """
         return '<House id={} x={} y={} out={}>'.format(self.id,self.x,self.y,self.output)
 
     

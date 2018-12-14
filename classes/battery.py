@@ -19,6 +19,9 @@ class Battery(object):
             return False
     
     def __repr__(self):
+        """
+        Specify which battery to use.
+        """
         return '<Battery x={} y={} cap={} id = {}>'.format(self.x,self.y,self.capacity,self.id)
 
     def check_storage_space(self):
@@ -28,7 +31,13 @@ class Battery(object):
         return self.capacity > 0
     
     def store(self, amount):
+        """
+        update power in battery
+        """        
         self.power = self.power - amount
     
     def reset(self):
+        """
+        update power to original capacity
+        """   
         self.power = self.capacity
