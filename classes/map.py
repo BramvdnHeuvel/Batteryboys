@@ -109,7 +109,6 @@ class Map:
         self.connect(house1, battery2)
         self.connect(house2, battery1)
 
-        print(self.moneyspent)
 
 def distance(house, battery):
     return abs(house.x - battery.x) + abs(house.y - battery.y)
