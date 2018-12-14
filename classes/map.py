@@ -9,7 +9,9 @@ class Map:
     """
 
     def __init__(self,neighbourhood):
-        """Initialize a Map and give it a neighbourhood."""
+        """
+        Initialize a Map and give it a neighbourhood.
+        """
         self.batteries  = get.batteries(neighbourhood)
         self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
@@ -17,10 +19,16 @@ class Map:
         self.executions = []
 
     def start(self):
+        """
+        Execute chosen algorithm.
+        """
         for function in self.executions:
             function(self)
 
     def execute(self,func):
+        """
+        Append function to executions list.
+        """      
         self.executions.append(func)
     
     def connect(self,house,battery,must_connect_to_battery=True):

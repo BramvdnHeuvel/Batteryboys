@@ -18,5 +18,5 @@ def first_fit_batteries(map):
             if not house in connected and battery.power > house.output:
                 map.connect(house, battery)
                 connected.append(house)
-    moneys.append(self.moneyspent)
+    moneys.append(map.moneyspent)
     

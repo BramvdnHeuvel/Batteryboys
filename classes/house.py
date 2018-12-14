@@ -2,7 +2,7 @@ class House:
     """
     The house class represents a house in the smart grid. Each house has an id,
     a x and y coordinate which determine the location of the house in the grid,
-     and an output.
+    and an output.
     """
 
     def __init__(self, id, x, y, output):
@@ -16,7 +16,6 @@ class House:
         if self.x == other.x and self.y == other.y:
             return True
         return False
-
 
     def connect(self, battery):
         self.connected = battery
