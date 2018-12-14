@@ -1,7 +1,6 @@
 import random
 import matplotlib.pyplot as plt
 from classes.map import distance
-
 import sys
 sys.path.append("..")
 from classes.house import House
@@ -14,8 +13,8 @@ def hillclimber(map):
     new_costs = []
     for i in range(30000):
         
-        house1 = map.houses[random.randrange(149)]
-        house2 = map.houses[random.randrange(149)]
+        house1 = map.houses[random.randrange(150)]
+        house2 = map.houses[random.randrange(150)]
 
         battery1 = house1.connected
         battery2 = house2.connected
@@ -31,7 +30,6 @@ def hillclimber(map):
             elif (distance(house1, battery2) + distance(house2, battery1)) < (distance(house1, battery1) + distance(house2, battery2)):
                 map.swap(house1, house2)
                 new_costs.append(map.moneyspent)
-                map.get_list()
 
         elif battery1 is None:
             check(house1, map.batteries)
@@ -42,5 +40,7 @@ def hillclimber(map):
 def check(house, batteries):
     for battery in batteries:
         if battery.power > house.output:
-            house.connect(battery)
+            House.connect(house, battery)
+            break
+            
 
