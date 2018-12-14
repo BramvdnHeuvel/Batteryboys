@@ -1,12 +1,12 @@
 import config
 from moveit.scheme import manhattan_distance
-import moveit.get
+import moveit.get as get
 import matplotlib.pyplot as plt
 
 class Map:
     def __init__(self,neighbourhood):
-        self.batteries  = moveit.get.batteries(neighbourhood)
-        self.houses     = moveit.get.houses(neighbourhood)
+        self.batteries  = get.batteries(neighbourhood)
+        self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
         
         self.executions = []
@@ -31,16 +31,11 @@ class Map:
         self.moneyspent += manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section 
 
     def disconnect(self,house,battery,must_connect_to_battery=True):
-        if house is None:
-            raise TypeError("Could not find house that needed to be connected.")
-        if battery is None:
-            raise TypeError("Could not find house/battery that needed to be connected to.")
-        
-        if must_connect_to_battery and battery.__class__.__name__ != "Battery":
-            raise TypeError("Cannot connect to a non-Battery object")
-
         battery.power += house.output
         self.moneyspent -= manhattan_distance(house.x,house.y,battery.x,battery.y) * config.cost_per_grid_section
+
+    def get_list(self):
+        return [house.connected.id for house in self.houses]
 
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         house = self.__find_object(x1,y1)
@@ -60,6 +55,19 @@ class Map:
         
         return None
 
+    def refresh_cost(self):
+        self.moneyspent = 0
+
+        for house_index in zip(self.houses, self.get_list()):
+            house = house_index[0]
+            bat_id = house_index[1]
+
+            battery = self.batteries[bat_id]
+
+            self.connect(house, battery)
+
+        return self.moneyspent
+
     def visualize(self):
         """Plots houses, batteries, and connections."""
         batteries_x = list(battery.x for battery in self.batteries)
@@ -69,7 +77,10 @@ class Map:
         
         # get x and y coords of connected battery for each house
         house_batteries = list(house.connected for house in self.houses)
-        # print(house_batteries)
+        # if len(house_batteries) != len(self.houses):
+        #     print("Not all houses are connected!")
+        #     # break
+        # print(len())
         con_batteries_x = list(battery.x for battery in house_batteries)
         con_batteries_y = list(battery.y for battery in house_batteries)
         con_batteries_id = list(battery.id for battery in house_batteries)
@@ -89,13 +100,10 @@ class Map:
         plt.show()
 
     def swap(self, house1, house2):
-        # geven alleen house1 en battery2 mee, niet house2
         battery1 = house1.connected
         battery2 = house2.connected
         self.disconnect(house1, battery1)
         self.disconnect(house2, battery2)
         self.connect(house1, battery2)
         self.connect(house2, battery1)
-
-        print(self.moneyspent)
 
