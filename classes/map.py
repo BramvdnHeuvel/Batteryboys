@@ -14,9 +14,12 @@ class Map:
         """
         self.batteries  = get.batteries(neighbourhood)
         self.houses     = get.houses(neighbourhood)
-        self.moneyspent = 0
         
         self.executions = []
+
+    def __money_get(self):
+        return self.refresh_cost()ssss
+    moneyspent = property(__money_get)
 
     def start(self):
         """
@@ -43,14 +46,15 @@ class Map:
             raise TypeError("Cannot connect to a non-Battery object")
 
         house.connect(battery)
-        self.moneyspent += distance(house, battery) * config.cost_per_grid_section 
+        moneyspent = distance(house, battery) * config.cost_per_grid_section 
+        return moneyspent
 
     def disconnect(self,house,battery,must_connect_to_battery=True):
         """
         When disconnected reduce moneyspent and update battery power.
         """
         battery.power += house.output
-        self.moneyspent -= distance(house, battery) * config.cost_per_grid_section
+        house.connected = None
 
     def get_list(self):
         """
@@ -85,7 +89,8 @@ class Map:
         """
         Checks the total amount of money spent again, as a double check.
         """ 
-        self.moneyspent = 0
+        self.reposition_batteries()
+        moneyspent = 0
 
         for house_index in zip(self.houses, self.get_list()):
             house = house_index[0]
@@ -93,9 +98,9 @@ class Map:
 
             battery = self.batteries[bat_id]
 
-            self.connect(house, battery)
+            moneyspent += self.connect(house, battery)
 
-        return self.moneyspent
+        return moneyspent
 
     def visualize(self):
         """
