@@ -32,7 +32,9 @@ class Map:
         self.executions.append(func)
     
     def connect(self,house,battery,must_connect_to_battery=True):
-        """When house is connected to battery increase moneyspent."""
+        """
+        When house is connected to battery increase moneyspent.
+        """
         if house is None:
             raise TypeError("Could not find house that needed to be connected.")
         if battery is None:
@@ -44,13 +46,15 @@ class Map:
         self.moneyspent += distance(house, battery) * config.cost_per_grid_section 
 
     def disconnect(self,house,battery,must_connect_to_battery=True):
-        """When disconnected reduce moneyspent."""
+        """
+        When disconnected reduce moneyspent and update battery power.
+        """
         battery.power += house.output
         self.moneyspent -= distance(house, battery) * config.cost_per_grid_section
 
     def get_list(self):
         """
-        Return house id of connected house.
+        Return battery id of connected house.
         """    
         return [house.connected.id for house in self.houses]
 
@@ -79,7 +83,7 @@ class Map:
 
     def refresh_cost(self):
         """
-        Set costs to zero
+        Checks the total amount of money spent again, as a double check.
         """ 
         self.moneyspent = 0
 

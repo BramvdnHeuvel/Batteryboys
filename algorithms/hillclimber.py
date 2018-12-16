@@ -9,6 +9,7 @@ from classes.map import Map
 def hillclimber(map):
     """
     Performs a hillclimber with two random chosen houses.
+    It takes two random chosen houses, checks if it is possible to switch and if the costs would be lower.
     """
     new_costs = []
     for i in range(30000):
@@ -38,6 +39,9 @@ def hillclimber(map):
             check(house2, map.batteries)
     
 def check(house, batteries):
+    """
+    Checks when a house is not connected to a battery if there is a battery which still has enough capacity.
+    """
     for battery in batteries:
         if battery.power > house.output:
             House.connect(house, battery)

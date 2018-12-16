@@ -1,10 +1,10 @@
 from classes.house import House
 
 def batteryswitch(self, houses, batteries):
-"""
-change x and y for batteries so that grid distance is minimal.
-If battery is full connect house to second closest battery.
-"""
+    """
+    change x and y for batteries so that grid distance is minimal.
+    If battery is full connect house to second closest battery.
+    """
     for battery in self.batteries:
 
         x_values = [house.x for house in self.houses if house.connected.id == battery.id]

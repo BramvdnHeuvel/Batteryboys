@@ -1,5 +1,8 @@
 import config
 import random
+import sys
+sys.path.append("..")
+from classes.map import distance
 
 def find_raced_fit(self, houses, batteries, population=32):
     print("Initiating population...")
@@ -51,9 +54,6 @@ def __create_first_individual(houses, batteries):
     
     return individual
 
-
-def distance(house, battery):
-    return abs(house.x - battery.x) + abs(house.y - battery.y)
 
 
 class Generation:
