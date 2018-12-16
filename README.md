@@ -3,14 +3,16 @@ This is the repository for our assignment. We need to make solve a case by conne
 The Manhattan grid is used, and per grid the cable which connects the house to a battery have a cost of 9 (check config).
 The houses all have a certain place in the map. This is given (check resources). The batteries begin with a given place, but later on we could move them. 
 So, we pay for the batteries and the cable per grid, and our goal is to reduce the costs as much as possible.
+To learn more about the case go to (http://heuristieken.nl/wiki/index.php?title=SmartGrid).
 
-### Vereisten
+### Requirements
 In requirements.txt you can find the packages used for this case. All code in this repository is written in Python 3.7.1.
+For Pandas we used pandas v0.23.4, and for matploblib we used version 3.0.2.
   
-### Structuur (Structure)
+### Structure
 In the map resources you can find all files we use. the map classes contains the House, Battery and map class we need for this assignment. In the map algorithms you can find all algorithms that were used for our case. The map results contains the results we found for the case. We plotted some algorithms so we could see how they would do, and if they really gave better results.  
   
-### Test (Testing)
+### Testing
 To run our code use:
 python main.py.
 
@@ -22,7 +24,7 @@ This results in our calculation.
 The state space will differ once we decide to add/remove batteries, because then the amount of batteries is different.
 Then, we will use N^150, where N is the number of batteries.
 
-#### Lower- and upperbounds:
+### Lower- and upperbounds:
 These are the Lower- and upperbounds costs for our case, per neighbourhood.
 The costs are for the grids only, so without the battery prices
 Map 1:
@@ -36,7 +38,7 @@ lowerbound: 17757
 upperbound: 76491
 These are calculated with an algorithm, called bounds. Here we check the fursthest away and the closest battery to a house.
 
-#### First fit batteries
+### First fit batteries
 Ran 1000 times, pay attention to the costs which are above 46000.
 ![What is this](/results/First_fit_batteries_goede.png)
 
@@ -44,17 +46,17 @@ Ran 1000 times, pay attention to the costs which are above 46000.
 Ran 1000 times, costs rarely drop below 46000.
 ![What is this](/results/first_fit_houses_goede.png)
 
-#### Hill climber
+### Hill climber
 hill climber tried 20.000 different swaps.
 ![What is this](/results/Hillclimber_try.png)
 
-#### Genetic race
+### Genetic race
 
-#### Differential evolution
+### Differential evolution
 After a million generations the total costs for map 1 were 63124.0, which is included with 25000 for the batteries.
 ![What is this](/results/Differential_evolution_results.png)
 
-#### Comparison
+### Comparison
 We see that the firsT_fit_houses gets slightly better results than the first_fit_batteries, but the results are not very good.
 They stop around 46.000.
 The differential evolution however, gets a result of around 38.000.

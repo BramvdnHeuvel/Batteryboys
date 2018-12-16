@@ -20,9 +20,7 @@ def hillclimber(map):
         battery1 = house1.connected
         battery2 = house2.connected
         if battery1 is not None and battery2 is not None:
-            if house1.id == house2.id:
-                pass
-            elif battery1.id == battery2.id:
+            if battery1.id == battery2.id:
                 pass
             elif battery1.power + house1.output - house2.output < 0:
                 pass            
