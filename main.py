@@ -17,8 +17,6 @@ while len(first_generation) < 4:
         grid.execute(first_fit_batteries)
         grid.execute(hillclimber)
         grid.start()
-        grid.visualize()
-        print(f"Before: {grid.moneyspent}\tAfter: {grid.refresh_cost()}")
 
         if [house.id for house in grid.houses if house.connected is None] == []:
             print(f"Found a child that costs {grid.moneyspent}!")

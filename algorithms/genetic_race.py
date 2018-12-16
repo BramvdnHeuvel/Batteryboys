@@ -4,13 +4,13 @@ import sys
 sys.path.append("..")
 from classes.map import distance
 
-def find_raced_fit(self, houses, batteries, population=32):
+def find_raced_fit(map, population=32):
     print("Initiating population...")
-    generation = __create_generation(houses, batteries, population, mutation=0.003)
+    generation = __create_generation(map.houses, map.batteries, population, mutation=0.003)
     amount = 0
     gen_nr = 0
 
-    while generation.find_best_one()[1][0] < len(houses):
+    while generation.find_best_one()[1][0] < len(map.houses):
         gen_nr += 1
         if gen_nr % 50 == 0:
             print(f"Creating generation {gen_nr}...")
@@ -19,19 +19,19 @@ def find_raced_fit(self, houses, batteries, population=32):
     print("Solution found!")
     print(generation.find_best_one())
 
-    for order in zip(houses, generation.find_best_one()[0]):
+    for order in zip(map.houses, generation.find_best_one()[0]):
         house = order[0]
         number = order[1]
-        battery = batteries[number]
+        battery = map.batteries[number]
 
         if battery.capacity >= house.output:
-            self.connect(house, battery)
+            map.connect(house, battery)
             amount += 1
         else:
             raise ValueError("A house did not fit while it was expected to.")
     
     print(f'Connected {amount} houses!')
-    print(self.moneyspent)
+    print(map.moneyspent)
 
 # -------------------------------------------------------------------------------------------
 
