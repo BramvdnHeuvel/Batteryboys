@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import sys
+
 from classes.map import Map
 from algorithms.differential_evolution import evolve_victor
 from algorithms.first_fit_houses import first_fit_houses
@@ -10,32 +13,41 @@ import random
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []
+use_map = int(input("Which neighbourhood do you want?"))
+if use_map > 3:
+    sys.exit("Please choose a map from 1 to 3")
+     
+algorithm = input("Which algorithm do you want to use?")
+if algorithm == "hill" or algorithm == "ffb" or algorithm == "ffh" or algorithm == "diff":
+    print("Let's go")
+else:
+    sys.exit("Please use a good algorithm. For hillclimber, choose hill. for differential, choose diff. For first fit choose ffb or ffh")
+algorithm_func = {'hill': hillclimber, 'diff': evolve_victor, 'ffb': first_fit_batteries, 'ffh': first_fit_houses, 'gn': find_raced_fit}
 
 while len(first_generation) < 4:
     try:
-        grid = Map(1)
-        grid.execute(first_fit_batteries)
-        grid.execute(hillclimber)
+
+        grid = Map(use_map)
+        grid.execute(algorithm_func[algorithm])
         grid.start()
 
         if [house.id for house in grid.houses if house.connected is None] == []:
             print(f"Found a child that costs {grid.moneyspent}!")
             first_generation.append(grid.get_list())
+      
     except AttributeError:
         print("Failed attempt.")
 
-grid = Map(1)
+grid = Map(2)
 generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutation=0.03)
 print(generation.find_best_one())
 scores = []
 
-for i in range(1000):
+for i in range(1000000):
     generation = next(generation)
     if (i + 1) % 100 == 0:
         print(f"Reached generation {i+1}!")
     scores.append(-1*generation.find_best_one()[1][2])
-
-import matplotlib.pyplot as plt
 
 print(generation.find_best_one())
 plt.plot(scores)
