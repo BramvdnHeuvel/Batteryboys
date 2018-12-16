@@ -18,6 +18,7 @@ class Map:
         
         self.executions = []
 
+    # Private function that refreshes moneyspent whenever it is called.
     def __money_get(self):
         return self.refresh_cost()
     moneyspent = property(__money_get)
@@ -91,6 +92,9 @@ class Map:
         return moneyspent
 
     def reposition_batteries(self):
+        """
+        Reposition the batteries onto the cheapest position on the grid.
+        """
         for battery in self.batteries:
             x_values = []
             y_values = []

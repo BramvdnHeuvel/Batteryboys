@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import random
 import time
-from classes.map import distance
+from classes.map import distance, Map
 
 import config
 
-def evolve_victor(self, houses, batteries, population=4):
-    generation = __create_generation(houses, batteries, population, mutation=0.03)
+def evolve_victor(map, population=4):
+    generation = __create_generation(map.houses, map.batteries, population, mutation=0.03)
     best_cost = []
 
     for i in range(10000):
