@@ -13,22 +13,22 @@ import random
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []
-use_map = int(input("Which neighbourhood do you want?"))
+use_map = int(input("Which neighbourhood do you want? "))
 if use_map > 3:
     sys.exit("Please choose a map from 1 to 3")
      
-algorithm = input("Which algorithm do you want to use?")
-if algorithm == "hill" or algorithm == "ffb" or algorithm == "ffh" or algorithm == "diff":
+algorithm_func = {'hill': hillclimber, 'diff': evolve_victor, 'ffb': first_fit_batteries, 'ffh': first_fit_houses, 'gn': find_raced_fit}
+algorithm = input("Which algorithm do you want to use? ")
+if algorithm.lower() in algorithm_func:
     print("Let's go")
 else:
-    sys.exit("Please use a good algorithm. For hillclimber, choose hill. for differential, choose diff. For first fit choose ffb or ffh")
-algorithm_func = {'hill': hillclimber, 'diff': evolve_victor, 'ffb': first_fit_batteries, 'ffh': first_fit_houses, 'gn': find_raced_fit}
+    sys.exit("\nPlease use a good algorithm.\n\nFor hillclimber, choose \tHILL.\nfor differential, choose \tDIFF.\nFor first fit, choose   \tFFB or FFH")
 
 while len(first_generation) < 4:
     try:
 
         grid = Map(use_map)
-        grid.execute(algorithm_func[algorithm])
+        grid.execute(algorithm_func[algorithm.lower()])
         grid.start()
 
         if [house.id for house in grid.houses if house.connected is None] == []:
