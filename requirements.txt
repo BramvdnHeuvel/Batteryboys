@@ -1,2 +1,2 @@
-pandas
-matplotlib
+pandas v0.23.4
+matplotlib 3.0.2
