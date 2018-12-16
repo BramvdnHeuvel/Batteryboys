@@ -18,7 +18,7 @@ class Map:
         self.executions = []
 
     def __money_get(self):
-        return self.refresh_cost()ssss
+        return self.refresh_cost()
     moneyspent = property(__money_get)
 
     def start(self):
@@ -82,6 +82,28 @@ class Map:
             moneyspent += self.connect(house, battery)
 
         return moneyspent
+
+    def reposition_batteries(self):
+        for battery in self.batteries:
+            x_values = []
+            y_values = []
+
+            for house in self.houses:
+                if house.connected is battery:
+                    x_values.append(house.x)
+                    y_values.append(house.y)
+            
+            x_values.sort()
+            y_values.sort()
+
+            x_index = (len(x_values) - 1)//2
+            y_index = (len(y_values) - 1)//2
+
+            median_x = x_values[x_index]
+            median_y = y_values[y_index]
+
+            battery.x = median_x
+            battery.y = median_y
 
     def visualize(self):
         """
