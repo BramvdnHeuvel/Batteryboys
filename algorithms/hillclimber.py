@@ -6,6 +6,7 @@ sys.path.append("..")
 from classes.house import House
 from classes.map import Map
 
+
 def hillclimber(map):
     """
     Performs a hillclimber with two random chosen houses.
@@ -28,7 +29,6 @@ def hillclimber(map):
                 pass
             elif (distance(house1, battery2) + distance(house2, battery1)) < (distance(house1, battery1) + distance(house2, battery2)):
                 map.swap(house1, house2)
-                new_costs.append(map.moneyspent)
 
         elif battery1 is None:
             check(house1, map.batteries)

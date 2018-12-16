@@ -38,7 +38,7 @@ while len(first_generation) < 4:
     except AttributeError:
         print("Failed attempt.")
 
-grid = Map(2)
+grid = Map(use_map)
 generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutation=0.03)
 print(generation.find_best_one())
 scores = []
