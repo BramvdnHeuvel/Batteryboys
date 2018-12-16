@@ -3,7 +3,15 @@ import get_data.get as get
 import matplotlib.pyplot as plt
 
 class Map:
+    """
+    The map class represents a neighbourhood in the smart grid. Each neighbourhood has
+    batteries and houses.
+    """
+
     def __init__(self,neighbourhood):
+        """
+        Initialize a Map and give it a neighbourhood.
+        """
         self.batteries  = get.batteries(neighbourhood)
         self.houses     = get.houses(neighbourhood)
         self.moneyspent = 0
@@ -11,20 +19,26 @@ class Map:
         self.executions = []
 
     def start(self):
+        """
+        Execute chosen algorithm.
+        """
         for function in self.executions:
             function(self)
 
     def execute(self,func):
+        """
+        Append function to executions list.
+        """      
         self.executions.append(func)
     
-    
-
     def connect(self,house,battery,must_connect_to_battery=True):
+        """
+        When house is connected to battery increase moneyspent.
+        """
         if house is None:
             raise TypeError("Could not find house that needed to be connected.")
         if battery is None:
             raise TypeError("Could not find house/battery that needed to be connected to.")
-        
         if must_connect_to_battery and battery.__class__.__name__ != "Battery":
             raise TypeError("Cannot connect to a non-Battery object")
 
@@ -32,20 +46,31 @@ class Map:
         self.moneyspent += distance(house, battery) * config.cost_per_grid_section 
 
     def disconnect(self,house,battery,must_connect_to_battery=True):
+        """
+        When disconnected reduce moneyspent and update battery power.
+        """
         battery.power += house.output
         self.moneyspent -= distance(house, battery) * config.cost_per_grid_section
 
     def get_list(self):
+        """
+        Return battery id of connected house.
+        """    
         return [house.connected.id for house in self.houses]
 
     def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
+        """
+        Connect battery to house.
+        """        
         house = self.__find_object(x1,y1)
-        battery = self.__find_object(x2,y2) # Note: doesn't have to be battery, per say
+        battery = self.__find_object(x2,y2)
 
         return self.connect(house,battery,must_connect_to_battery)
 
     def __find_object(self,x,y):
-        """Find the object that is located on a given location."""
+        """
+        Find the object that is located on a given location.
+        """
         for battery in self.batteries:
             if x == battery.x and y == battery.y:
                 return battery
@@ -57,6 +82,9 @@ class Map:
         return None
 
     def refresh_cost(self):
+        """
+        Checks the total amount of money spent again, as a double check.
+        """ 
         self.moneyspent = 0
 
         for house_index in zip(self.houses, self.get_list()):
@@ -70,7 +98,9 @@ class Map:
         return self.moneyspent
 
     def visualize(self):
-        """Plots houses, batteries, and connections."""
+        """
+        Plots houses, batteries, and connections.
+        """
         batteries_x = list(battery.x for battery in self.batteries)
         batteries_y = list(battery.y for battery in self.batteries)
         houses_x = list(house.x for house in self.houses)
@@ -78,10 +108,6 @@ class Map:
         
         # get x and y coords of connected battery for each house
         house_batteries = list(house.connected for house in self.houses)
-        # if len(house_batteries) != len(self.houses):
-        #     print("Not all houses are connected!")
-        #     # break
-        # print(len())
         con_batteries_x = list(battery.x for battery in house_batteries)
         con_batteries_y = list(battery.y for battery in house_batteries)
         con_batteries_id = list(battery.id for battery in house_batteries)
@@ -102,6 +128,9 @@ class Map:
         plt.show()
 
     def swap(self, house1, house2):
+        """
+        Swap function to switch connections between two houses and batteries.
+        """
         battery1 = house1.connected
         battery2 = house2.connected
         self.disconnect(house1, battery1)
@@ -111,5 +140,8 @@ class Map:
 
 
 def distance(house, battery):
+    """
+    Calculate distance between battery and house.
+    """
     return abs(house.x - battery.x) + abs(house.y - battery.y)
 

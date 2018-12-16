@@ -10,13 +10,11 @@ def first_fit_batteries(map):
     """
     moneys = []
     connected = []
-    # random.shuffle(batteries)
-    # random.shuffle(houses)
 
     for battery in map.batteries:
         for house in map.houses:
             if not house in connected and battery.power > house.output:
                 map.connect(house, battery)
                 connected.append(house)
-    moneys.append(self.moneyspent)
+    moneys.append(map.moneyspent)
     
