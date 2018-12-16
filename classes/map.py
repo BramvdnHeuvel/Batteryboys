@@ -12,8 +12,9 @@ class Map:
         """
         Initialize a Map and give it a neighbourhood.
         """
-        self.batteries  = get.batteries(neighbourhood)
-        self.houses     = get.houses(neighbourhood)
+        self.batteries      = get.batteries(neighbourhood)
+        self.houses         = get.houses(neighbourhood)
+        self.neighbourhood  = neighbourhood
         
         self.executions = []
 
@@ -70,16 +71,22 @@ class Map:
         """
         Checks the total amount of money spent again, as a double check.
         """ 
+        test_map = Map(self.neighbourhood)
+
+        def test_connection(map):
+            moneyspent = 0
+            for house_index in zip(map.houses, self.get_list()):
+                house = house_index[0]
+                bat_id = house_index[1]
+
+                battery = map.batteries[bat_id]
+
+                moneyspent += test_map.connect(house, battery)
+            return moneyspent
+
+        test_connection(test_map)
         self.reposition_batteries()
-        moneyspent = 0
-
-        for house_index in zip(self.houses, self.get_list()):
-            house = house_index[0]
-            bat_id = house_index[1]
-
-            battery = self.batteries[bat_id]
-
-            moneyspent += self.connect(house, battery)
+        moneyspent = test_connection(test_map)
 
         return moneyspent
 
