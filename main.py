@@ -28,7 +28,6 @@ while len(first_generation) < 4:
     try:
 
         grid = Map(use_map)
-        # grid.execute(first_fit_batteries)
         grid.execute(algorithm_func[algorithm])
         grid.start()
 
