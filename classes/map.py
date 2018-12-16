@@ -23,20 +23,20 @@ class Map:
 
     def start(self):
         """
-        Execute chosen algorithm.
+        Execute all given algorithms.
         """
         for function in self.executions:
             function(self)
 
     def execute(self,func):
         """
-        Append function to executions list.
+        Append function to list of algorithms to be executed.
         """      
         self.executions.append(func)
     
     def connect(self,house,battery,must_connect_to_battery=True):
         """
-        When house is connected to battery increase moneyspent.
+        Connect a given house to a provided battery.
         """
         if house is None:
             raise TypeError("Could not find house that needed to be connected.")
@@ -49,9 +49,9 @@ class Map:
         moneyspent = distance(house, battery) * config.cost_per_grid_section 
         return moneyspent
 
-    def disconnect(self,house,battery,must_connect_to_battery=True):
+    def disconnect(self,house,battery):
         """
-        When disconnected reduce moneyspent and update battery power.
+        Disconnect a house from a battery.
         """
         battery.power += house.output
         house.connected = None
@@ -59,31 +59,12 @@ class Map:
     def get_list(self):
         """
         Return battery id of connected house.
-        """    
-        return [house.connected.id for house in self.houses]
-
-    def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         """
-        Connect battery to house.
-        """        
-        house = self.__find_object(x1,y1)
-        battery = self.__find_object(x2,y2)
-
-        return self.connect(house,battery,must_connect_to_battery)
-
-    def __find_object(self,x,y):
-        """
-        Find the object that is located on a given location.
-        """
-        for battery in self.batteries:
-            if x == battery.x and y == battery.y:
-                return battery
-        
-        for house in self.houses:
-            if x == house.x and y == house.y:
-                return house
-        
-        return None
+        try:
+            return [house.connected.id for house in self.houses]
+        except AttributeError:
+            print("Warning: Could not execute function 'get_list' due to some disconnected houses.")
+            return None
 
     def refresh_cost(self):
         """
@@ -134,7 +115,7 @@ class Map:
 
     def swap(self, house1, house2):
         """
-        Swap function to switch connections between two houses and batteries.
+        Switch connections between two houses and their respective batteries.
         """
         battery1 = house1.connected
         battery2 = house2.connected
@@ -149,4 +130,3 @@ def distance(house, battery):
     Calculate distance between battery and house.
     """
     return abs(house.x - battery.x) + abs(house.y - battery.y)
-
