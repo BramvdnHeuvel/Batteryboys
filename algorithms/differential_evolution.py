@@ -5,8 +5,8 @@ from classes.map import distance
 
 import config
 
-def evolve_victor(self, houses, batteries, population=4):
-    generation = __create_generation(houses, batteries, population, mutation=0.03)
+def evolve_victor(map, population=4):
+    generation = __create_generation(map.houses, map.batteries, population, mutation=0.03)
     best_cost = []
 
     for i in range(10000):

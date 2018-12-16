@@ -12,28 +12,33 @@ class Map:
         """
         Initialize a Map and give it a neighbourhood.
         """
-        self.batteries  = get.batteries(neighbourhood)
-        self.houses     = get.houses(neighbourhood)
-        self.moneyspent = 0
+        self.batteries      = get.batteries(neighbourhood)
+        self.houses         = get.houses(neighbourhood)
+        self.neighbourhood  = neighbourhood
         
         self.executions = []
 
+    # Private function that refreshes moneyspent whenever it is called.
+    def __money_get(self):
+        return self.refresh_cost()
+    moneyspent = property(__money_get)
+
     def start(self):
         """
-        Execute chosen algorithm.
+        Execute all given algorithms.
         """
         for function in self.executions:
             function(self)
 
     def execute(self,func):
         """
-        Append function to executions list.
+        Append function to list of algorithms to be executed.
         """      
         self.executions.append(func)
     
     def connect(self,house,battery,must_connect_to_battery=True):
         """
-        When house is connected to battery increase moneyspent.
+        Connect a given house to a provided battery.
         """
         if house is None:
             raise TypeError("Could not find house that needed to be connected.")
@@ -43,59 +48,73 @@ class Map:
             raise TypeError("Cannot connect to a non-Battery object")
 
         house.connect(battery)
-        self.moneyspent += distance(house, battery) * config.cost_per_grid_section 
+        moneyspent = distance(house, battery) * config.cost_per_grid_section 
+        return moneyspent
 
-    def disconnect(self,house,battery,must_connect_to_battery=True):
+    def disconnect(self,house,battery):
         """
-        When disconnected reduce moneyspent and update battery power.
+        Disconnect a house from a battery.
         """
         battery.power += house.output
-        self.moneyspent -= distance(house, battery) * config.cost_per_grid_section
+        house.connected = None
 
     def get_list(self):
         """
         Return battery id of connected house.
-        """    
-        return [house.connected.id for house in self.houses]
-
-    def __connect(self,x1,y1,x2,y2,must_connect_to_battery):
         """
-        Connect battery to house.
-        """        
-        house = self.__find_object(x1,y1)
-        battery = self.__find_object(x2,y2)
-
-        return self.connect(house,battery,must_connect_to_battery)
-
-    def __find_object(self,x,y):
-        """
-        Find the object that is located on a given location.
-        """
-        for battery in self.batteries:
-            if x == battery.x and y == battery.y:
-                return battery
-        
-        for house in self.houses:
-            if x == house.x and y == house.y:
-                return house
-        
-        return None
+        try:
+            return [house.connected.id for house in self.houses]
+        except AttributeError:
+            print("Warning: Could not execute function 'get_list' due to some disconnected houses.")
+            return None
 
     def refresh_cost(self):
         """
         Checks the total amount of money spent again, as a double check.
         """ 
-        self.moneyspent = 0
+        test_map = Map(self.neighbourhood)
 
-        for house_index in zip(self.houses, self.get_list()):
-            house = house_index[0]
-            bat_id = house_index[1]
+        def test_connection(map):
+            moneyspent = 0
+            for house_index in zip(map.houses, self.get_list()):
+                house = house_index[0]
+                bat_id = house_index[1]
 
-            battery = self.batteries[bat_id]
+                battery = map.batteries[bat_id]
 
-            self.connect(house, battery)
+                moneyspent += test_map.connect(house, battery)
+            return moneyspent
 
-        return self.moneyspent
+        test_connection(test_map)
+        self.reposition_batteries()
+        moneyspent = test_connection(test_map)
+
+        return moneyspent
+
+    def reposition_batteries(self):
+        """
+        Reposition the batteries onto the cheapest position on the grid.
+        """
+        for battery in self.batteries:
+            x_values = []
+            y_values = []
+
+            for house in self.houses:
+                if house.connected is battery:
+                    x_values.append(house.x)
+                    y_values.append(house.y)
+            
+            x_values.sort()
+            y_values.sort()
+
+            x_index = (len(x_values) - 1)//2
+            y_index = (len(y_values) - 1)//2
+
+            median_x = x_values[x_index]
+            median_y = y_values[y_index]
+
+            battery.x = median_x
+            battery.y = median_y
 
     def visualize(self):
         """
@@ -129,7 +148,7 @@ class Map:
 
     def swap(self, house1, house2):
         """
-        Swap function to switch connections between two houses and batteries.
+        Switch connections between two houses and their respective batteries.
         """
         battery1 = house1.connected
         battery2 = house2.connected
@@ -144,4 +163,3 @@ def distance(house, battery):
     Calculate distance between battery and house.
     """
     return abs(house.x - battery.x) + abs(house.y - battery.y)
-
