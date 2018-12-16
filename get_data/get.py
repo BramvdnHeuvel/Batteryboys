@@ -4,7 +4,9 @@ import re
 import pandas as pd
  
 def __load_batteries(filename):
-    """Get a list of batteries from a given neighbourhood. The neighbourhood is an integer."""
+    """
+    Get a list of batteries from a given neighbourhood. The neighbourhood is an integer.
+    """
     battery_list=[]
     id = 0
     with open(filename,'r') as file:
@@ -19,7 +21,9 @@ def __load_batteries(filename):
     return battery_list
         
 def __load_houses(filename):
-    """Get a list of houses from a given neighbourhood. The neighbourhood is an integer.""" 
+    """
+    Get a list of houses from a given neighbourhood. The neighbourhood is an integer.
+    """ 
     data = pd.read_csv(filename)
     huizen = []
     i = 0
@@ -33,7 +37,13 @@ def __load_houses(filename):
     return huizen
 
 def batteries(neighbourhood):
+    """
+    Specify which neighbourhood to use.
+    """
     return __load_batteries('resources/wijk{}_batterijen.txt'.format(neighbourhood))
 
 def houses(neighbourhood):
+    """
+    Specify which neighbourhood to use.
+    """
     return __load_houses('resources/wijk{}_huizen.csv'.format(neighbourhood))

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import random
 import time
+from classes.map import distance
 
 import config
 
@@ -48,10 +49,6 @@ def __create_first_individual(houses, batteries):
         individual.append(connection)
     
     return individual
-
-
-def distance(house, battery):
-    return abs(house.x - battery.x) + abs(house.y - battery.y)
 
 
 class DEGeneration:

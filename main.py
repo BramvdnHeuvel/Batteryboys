@@ -1,5 +1,4 @@
 from classes.map import Map
-
 from algorithms.differential_evolution import evolve_victor
 from algorithms.first_fit_houses import first_fit_houses
 from algorithms.first_fit_batteries import first_fit_batteries
@@ -8,7 +7,6 @@ from algorithms.hillclimber import hillclimber
 from algorithms.bounds import first_distance
 from algorithms.bounds import highest_distance
 import random
-
 from algorithms.differential_evolution import DEGeneration
 
 first_generation = []
@@ -18,8 +16,8 @@ while len(first_generation) < 4:
         grid = Map(1)
         grid.execute(first_fit_batteries)
         grid.execute(hillclimber)
-        print("a")
         grid.start()
+        grid.visualize()
         print(f"Before: {grid.moneyspent}\tAfter: {grid.refresh_cost()}")
 
         if [house.id for house in grid.houses if house.connected is None] == []:
@@ -33,7 +31,7 @@ generation = DEGeneration(grid.houses, grid.batteries, first_generation, mutatio
 print(generation.find_best_one())
 scores = []
 
-for i in range(1000000):
+for i in range(1000):
     generation = next(generation)
     if (i + 1) % 100 == 0:
         print(f"Reached generation {i+1}!")
