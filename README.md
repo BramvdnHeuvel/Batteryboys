@@ -19,6 +19,7 @@ You can choose which neighbourhood (1, 2 or 3) you want to use and which algorit
 For our case it is best to use several algorithms, because sometimes the differential after a hillclimber gets a better result.
 Therefore, you can choose the first algorithm, but after this the results of the algorithm are still given to the differential, which makes new generations and tries to get a cheaper neighbourhood. 
 The first fits for map 3 do not work, because they only connect 149 houses to batteries while we only accept 150 connected houses as a valid outcome.
+The test.py file in our repository is a unittester, which checks the code we upload. 
 
 ### State space
 State space: The statespace is calculated (per neighbourhood) with the batteries and the houses. 
