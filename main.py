@@ -34,6 +34,8 @@ while len(first_generation) < 4:
         if [house.id for house in grid.houses if house.connected is None] == []:
             print(f"Found a child that costs {grid.moneyspent}!")
             first_generation.append(grid.get_list())
+        else:
+            print("Found an insufficient child.")
       
     except AttributeError:
         print("Failed attempt.")

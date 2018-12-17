@@ -8,7 +8,7 @@ class Map:
     batteries and houses.
     """
 
-    def __init__(self,neighbourhood):
+    def __init__(self,neighbourhood,movable_batteries=False):
         """
         Initialize a Map and give it a neighbourhood.
         """
@@ -16,6 +16,7 @@ class Map:
         self.houses         = get.houses(neighbourhood)
         self.neighbourhood  = neighbourhood
         
+        self.batteries_can_be_moved = movable_batteries
         self.executions = []
 
     # Private function that refreshes moneyspent whenever it is called.
@@ -76,17 +77,20 @@ class Map:
 
         def test_connection(map):
             moneyspent = 0
-            for house_index in zip(map.houses, self.get_list()):
+            for house_index in zip(map.houses, self.houses):
                 house = house_index[0]
-                bat_id = house_index[1]
-
-                battery = map.batteries[bat_id]
-
-                moneyspent += test_map.connect(house, battery)
+                try:
+                    bat_id = house_index[1].connected.id
+                except AttributeError:
+                    pass
+                else:
+                    battery = map.batteries[bat_id]
+                    moneyspent += test_map.connect(house, battery)
             return moneyspent
 
         test_connection(test_map)
-        self.reposition_batteries()
+        if self.batteries_can_be_moved:
+            test_map.reposition_batteries()
         moneyspent = test_connection(test_map)
 
         return moneyspent
