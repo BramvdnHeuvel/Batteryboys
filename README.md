@@ -15,6 +15,10 @@ In the map resources you can find all files we use. the map classes contains the
 ### Testing
 To run our code use:
 python main.py.
+You can choose which neighbourhood (1, 2 or 3) you want to use and which algorithm.
+For our case it is best to use several algorithms, because sometimes the differential after a hillclimber gets a better result.
+Therefore, you can choose the first algorithm, but after this the results of the algorithm are still given to the differential, which makes new generations and tries to get a cheaper neighbourhood. 
+The first fits for map 3 do not work, because they only connect 149 houses to batteries while we only accept 150 connected houses as a valid outcome.
 
 ### State space
 State space: The statespace is calculated (per neighbourhood) with the batteries and the houses. 
@@ -26,7 +30,8 @@ Then, we will use N^150, where N is the number of batteries.
 
 ### Lower- and upperbounds:
 These are the Lower- and upperbounds costs for our case, per neighbourhood.
-The costs are for the grids only, so without the battery prices
+The costs are for the grids only, so without the battery prices.
+The bounds are for exercise A and B, where the batteries still have a specific spot.
 Map 1:
 lowerbound: 28188
 upperbound: 78030
@@ -37,24 +42,6 @@ Map 3:
 lowerbound: 17757
 upperbound: 76491
 These are calculated with an algorithm, called bounds. Here we check the fursthest away and the closest battery to a house.
-
-### First fit batteries
-Ran 1000 times, pay attention to the costs which are above 46000.
-![What is this](/results/First_fit_batteries_goede.png)
-
-### First fit houses
-Ran 1000 times, costs rarely drop below 46000.
-![What is this](/results/first_fit_houses_goede.png)
-
-### Hill climber
-hill climber tried 20.000 different swaps.
-![What is this](/results/Hillclimber_try.png)
-
-### Genetic race
-
-### Differential evolution
-After a million generations the total costs for map 1 were 63124.0, which is included with 25000 for the batteries.
-![What is this](/results/Differential_evolution_results.png)
 
 ### Comparison
 We see that the firsT_fit_houses gets slightly better results than the first_fit_batteries, but the results are not very good.

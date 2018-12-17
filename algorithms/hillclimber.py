@@ -12,8 +12,7 @@ def hillclimber(map):
     Performs a hillclimber with two random chosen houses.
     It takes two random chosen houses, checks if it is possible to switch and if the costs would be lower.
     """
-    new_costs = []
-    for i in range(30000):
+    for i in range(40000):
         
         house1 = map.houses[random.randrange(150)]
         house2 = map.houses[random.randrange(150)]
