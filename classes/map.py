@@ -76,13 +76,15 @@ class Map:
 
         def test_connection(map):
             moneyspent = 0
-            for house_index in zip(map.houses, self.get_list()):
+            for house_index in zip(map.houses, self.houses):
                 house = house_index[0]
-                bat_id = house_index[1]
-
-                battery = map.batteries[bat_id]
-
-                moneyspent += test_map.connect(house, battery)
+                try:
+                    bat_id = house_index[1].connected.id
+                except AttributeError:
+                    pass
+                else:
+                    battery = map.batteries[bat_id]
+                    moneyspent += test_map.connect(house, battery)
             return moneyspent
 
         test_connection(test_map)
